@@ -1,11 +1,14 @@
 import * as Phaser from 'phaser';
 import BaseScene from './BaseScene';
-import { Player } from '../entities/Player';
-import RenderSystem from '../systems/RenderSystem';
-import InputSystem from '../systems/InputSystem';
-import { EventType } from '../engine/types';
-import PlayerHealthSystem from '../systems/PlayerHealthSystem';
-import MessageBus from '../messageBus/MessageBus';
+import {GameEngine} from "../engine/gameEngine";
+import {EntityCollection} from "../engine/world";
+import {Player} from "../entities/Player";
+import RenderSystem from "../systems/RenderSystem";
+import InputSystem from "../systems/InputSystem";
+import { MovementSystem } from '../systems/MovementSystem';
+import { World } from '../world';
+import { CollisionSystem } from '../systems/CollisionSystem';
+
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -13,6 +16,8 @@ export default class MainScene extends BaseScene {
 	private testPlayer: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
 	private currentHealth: number;
 	private healthText: Phaser.GameObjects.Text;
+	debugGraphics: Phaser.GameObjects.Graphics;
+	private world: World;
 
 	constructor() {
 		super({ key: MainScene.key });
@@ -21,8 +26,13 @@ export default class MainScene extends BaseScene {
 	init() {
 		super.init();
 
-		this.listenForHealthChanges();
+		this.engine = new GameEngine();
+		this.world = new World(this, this.engine);
 
+        this.engine.addSystem(new MovementSystem(this.world.entityProvider, this));
+		this.engine.addSystem(new CollisionSystem(this, this.engine.events, this.world));
+		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.world.entityProvider));
+		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.entities));
 		this.engine.addSystem(new InputSystem(this, this.entities));
 		this.engine.addSystem(new PlayerHealthSystem());
@@ -36,41 +46,29 @@ export default class MainScene extends BaseScene {
 	}
 
 	create(): void {
-		this.testPlayer = this.physics.add.sprite(500, 800, 'textures', 'cupcake');
-		this.testPlayer.setCollideWorldBounds(true);
+		this.debugGraphics = this.add.graphics();
 		this.initializeMapAndCameras();
-		this.createEntity(Player, {
-			x: 350,
-			y: 1000
-		});
+		this.world.createEntity(
+			Player,
+			{
+				x: 350,
+				y: 1000
+			});
+
 		this.drawHealthValue();
 	}
 
-	private listenForHealthChanges() {
-		MessageBus.subscribe(EventType.PLAYER_HEALTH, (data) => {
-			this.currentHealth = data.health;
-		});
-	}
-
 	private initializeMapAndCameras(): void {
-		const map = this.make.tilemap({ key: 'map1' });
-		const tileset = map.addTilesetImage('walls', 'tiles');
-		this.wallLayer = map.createLayer(0, tileset, 0, 0);
-		this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-		this.wallLayer.setCollisionByExclusion([], true);
+		this.world.initializeMap('map1');
 
-		this.physics.add.collider(this.testPlayer, this.wallLayer);
-
-		this.engine.events.on(EventType.ENTITY_ADDED, ({ id, entitySprite }) => {
-			this.physics.add.existing(entitySprite);
-			this.physics.add.collider(entitySprite, this.wallLayer);
+		this.cameras.main.setBounds(0, 0, this.world.map.widthInPixels, this.world.map.heightInPixels);
+		this.world.map.renderDebug(this.debugGraphics, {
+			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
 		});
-		this.physics.world.createDebugGraphic();
 	}
 
 	update(time: number, delta: number): void {
 		this.engine.step(delta);
-		this.testPlayer.y += 1;
 		this.updateHealthText();
 	}
 

@@ -3,6 +3,7 @@ export interface DessertComponents {
     movement?: MovementComponent;
     render?: RenderComponent;
     facing?: FacingComponent;
+    collision?: CollisionComponent;
 }
 
 export interface RenderComponent {
@@ -23,4 +24,14 @@ export interface MovementComponent {
 export interface PositionComponent {
     x: number;
     y: number;
+}
+
+export interface CollisionComponent {
+    tiles?: boolean;
+    blocked?: {
+        up: boolean;
+        down: boolean;
+        left: boolean;
+        right: boolean;
+    }
 }

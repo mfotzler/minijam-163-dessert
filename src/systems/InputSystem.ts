@@ -21,28 +21,29 @@ export default class InputSystem implements System {
 		this.decrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
 	}
 
-	step(data: StepData): Promise<void> | void {
-		this.entityProvider.entities.forEach((entity) => {
-			if (entity.position) {
-				if (this.scene.input.keyboard.checkDown(this.cursors.right)) {
-					entity.position.x += 1;
-				} else if (this.scene.input.keyboard.checkDown(this.cursors.left)) {
-					entity.position.x -= 1;
-				}
+    step(data: StepData): Promise<void> | void {
+        this.entityProvider.entities.forEach((entity) => {
+            if (entity.position) {
+                if (this.scene.input.keyboard.checkDown(this.cursors.right)) {
+                    entity.movement.velocityX = 0.1;
+                } else if (this.scene.input.keyboard.checkDown(this.cursors.left)) {
+                    entity.movement.velocityX -= 0.1;
+                } else {
+                    entity.movement.velocityX = 0;
+                }
+							if (Phaser.Input.Keyboard.JustDown(this.incrementHealthKey))
+								MessageBus.sendMessage(EventType.PLAYER_HEAL, { heal: 1 });
+							if (Phaser.Input.Keyboard.JustDown(this.decrementHealthKey))
+								MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: 1 });
 
-				if (Phaser.Input.Keyboard.JustDown(this.incrementHealthKey))
-					MessageBus.sendMessage(EventType.PLAYER_HEAL, { heal: 1 });
-				if (Phaser.Input.Keyboard.JustDown(this.decrementHealthKey))
-					MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: 1 });
 
-				// make him jump if the jump key is pressed and he's on the ground
-				if (
-					Phaser.Input.Keyboard.JustDown(this.jumpKey) &&
-					entity.position.y === this.scene.cameras.main.height
-				) {
-					entity.movement.velocityY = -0.3;
-				}
-			}
-		});
-	}
+
+							// make him jump if the jump key is pressed and he's on the ground
+                if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
+                    entity.movement.velocityY = -0.3;
+                }
+            }
+        });
+    }
+
 }

@@ -29,15 +29,22 @@ export default class RenderSystem implements System {
     }
 
     private createSprite(render: RenderComponent): Phaser.GameObjects.Sprite {
-        return this.scene.add.sprite(0, 0, 'textures', render.spriteKey);
+        return this.scene.physics.add.sprite(0, 0, 'textures', render.spriteKey);
     }
     step({ }: StepData) {
         this.entityProvider.entities.forEach((entity) => {
-            const { render, position } = entity;
+            const { render, position, movement } = entity;
 
             if (render && position) {
                 const entitySprite = this.getOrCreateSprite(entity.id, render);
                 entitySprite.setPosition(position.x, position.y);
+                if (movement) {
+                    // this is absolutely critical for arcade physics to work!
+                    // if we just set position only, the physics system will not calculate any collision because the entity is not moving
+                    entitySprite.body.velocity.x = movement.velocityX;
+                    entitySprite.body.velocity.y = movement.velocityY;
+                    entity.collision.blocked = { ...(entitySprite.body as Phaser.Physics.Arcade.Body).blocked };
+                }
             }
         });
     }
