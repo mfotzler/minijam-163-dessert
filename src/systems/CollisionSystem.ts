@@ -2,10 +2,11 @@ import EventEmitter from "events";
 import { EventType, StepData, System } from "../engine/types";
 import BaseScene from "../scenes/BaseScene";
 import { World } from "../world";
+import MessageBus from "../messageBus/MessageBus";
 
 export class CollisionSystem implements System {
-    constructor(private scene: BaseScene, private events: EventEmitter, private world: World) {
-        events.on(EventType.ENTITY_ADDED, ({ id, entitySprite }: { id: string, entitySprite: Phaser.GameObjects.Sprite }) => {
+    constructor(scene: BaseScene, world: World) {
+        MessageBus.subscribe(EventType.ENTITY_ADDED, ({ id, entitySprite }: { id: string, entitySprite: Phaser.GameObjects.Sprite }) => {
 			const entity = world.entityProvider.getEntity(id);
             if (!entity.collision) return;
 

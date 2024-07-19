@@ -27,11 +27,11 @@ export default class MainScene extends BaseScene {
 		super.init();
 
 		this.engine = new GameEngine();
-		this.world = new World(this, this.engine);
+		this.world = new World(this);
 
 		this.engine.addSystem(new MovementSystem(this.world.entityProvider, this));
-		this.engine.addSystem(new CollisionSystem(this, this.engine.events, this.world));
-		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.world.entityProvider));
+		this.engine.addSystem(new CollisionSystem(this, this.world));
+		this.engine.addSystem(new RenderSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new PlayerHealthSystem());
 		this.engine.addSystem(new WeaponSystem(this.world));

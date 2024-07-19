@@ -1,20 +1,20 @@
 import { v4 } from 'uuid';
 import { cloneDeep } from 'lodash';
-import { EventEmitter } from 'events';
 import { EventType } from '../types';
 import { EntityDefinition } from '../entities/types';
 import { EntityProvider } from './types';
+import MessageBus from '../../messageBus/MessageBus';
 
 export class EntityCollection<TComponents> implements EntityProvider<TComponents> {
   private entitiesMap: Map<string, EntityDefinition<TComponents>>;
 
-  constructor(public events: EventEmitter) {
+  constructor() {
     this.entitiesMap = new Map();
 
-    this.events.on(EventType.ADD_ENTITY, ({ entity }) => {
+    MessageBus.subscribe(EventType.ADD_ENTITY, ({ entity }) => {
       this.addEntityData(entity);
     });
-    this.events.on(EventType.DELETE_ENTITY, ({ entityId }) => {
+    MessageBus.subscribe(EventType.DELETE_ENTITY, ({ entityId }) => {
       this.removeEntity(entityId);
     });
   }
@@ -43,7 +43,7 @@ export class EntityCollection<TComponents> implements EntityProvider<TComponents
     const { id } = data;
     const entity = cloneDeep(data);
     if (!this.entitiesMap.has(id)) {
-      this.events.emit(EventType.ENTITY_PREINIT, { entity });
+      MessageBus.sendMessage(EventType.ENTITY_PREINIT, { entity });
     }
     this.addEntity(entity);
     return entity;
@@ -52,7 +52,7 @@ export class EntityCollection<TComponents> implements EntityProvider<TComponents
   private removeEntity(id: string): boolean {
     const removed = this.entitiesMap.delete(id);
     if (removed) {
-      this.events.emit(EventType.ENTITY_DELETED, { entityId: id });
+      MessageBus.sendMessage(EventType.ENTITY_DELETED, { entityId: id });
     }
     return removed;
   }

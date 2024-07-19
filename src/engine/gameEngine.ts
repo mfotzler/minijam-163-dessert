@@ -19,11 +19,9 @@ export class GameEngine {
   }
 
   step(delta: number): void {
-    this.events.emit(EventType.STEP_BEGIN);
     this.systems.forEach(async ({ system, runWhenPaused }) => {
       if (this.isPaused && !runWhenPaused) return;
       await system.step({ delta });
     });
-    this.events.emit(EventType.STEP_END);
   }
 }

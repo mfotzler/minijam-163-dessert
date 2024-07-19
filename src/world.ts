@@ -5,6 +5,7 @@ import { EntityCollection } from "./engine/world";
 import { DessertComponents } from "./entities/types";
 import BaseScene from "./scenes/BaseScene";
 import { Player } from "./entities/Player";
+import MessageBus from "./messageBus/MessageBus";
 
 export interface Point {
     x: number,
@@ -17,8 +18,8 @@ export class World {
     wallLayer: Phaser.Tilemaps.TilemapLayer;
     playerId: string;
 
-    constructor(private scene: BaseScene, private engine: GameEngine) {
-        this.entityProvider = new EntityCollection(this.engine.events);
+    constructor(private scene: BaseScene) {
+        this.entityProvider = new EntityCollection();
     }
 
     initializeMap(key: string): void {
@@ -40,7 +41,7 @@ export class World {
         { x, y }: Point,
     ): string {
         const id = this.entityProvider.createEntityId();
-        this.engine.events.emit(EventType.ADD_ENTITY, {
+        MessageBus.sendMessage(EventType.ADD_ENTITY, {
             entity: {
                 ...cloneDeep(base),
                 position: {

@@ -4,14 +4,13 @@ import {EntityCollection} from "../engine/world";
 import BaseScene from "../scenes/BaseScene";
 import {EventEmitter} from "events";
 import { EntityDefinition } from "../engine/entities/types";
+import MessageBus from "../messageBus/MessageBus";
 
 export default class RenderSystem implements System {
     private sprites: { [id: string]: Phaser.Physics.Arcade.Sprite } = {};
 
-    constructor(private events: EventEmitter, private scene: BaseScene, private entityProvider: EntityCollection<DessertComponents>) {
-        this.events = events;
-
-        this.events.on(EventType.ADD_ENTITY, ({ entity }: { entity: EntityDefinition<DessertComponents> }) => {
+    constructor(private scene: BaseScene, private entityProvider: EntityCollection<DessertComponents>) {
+        MessageBus.subscribe(EventType.ADD_ENTITY, ({ entity }: { entity: EntityDefinition<DessertComponents> }) => {
             const { id, position, movement, render } = entity;
             if (!this.sprites[id] && render) {
                 const entitySprite = this.createSprite(render);
@@ -21,11 +20,11 @@ export default class RenderSystem implements System {
                 }
                 this.sprites[id] = entitySprite;
 
-                this.events.emit(EventType.ENTITY_ADDED, { id, entitySprite });
+                MessageBus.sendMessage(EventType.ENTITY_ADDED, { id, entitySprite });
             }
         });
 
-        this.events.on(EventType.ENTITY_DELETED, ({ entityId: id }) => {
+        MessageBus.subscribe(EventType.ENTITY_DELETED, ({ entityId: id }) => {
             const entitySprite = this.sprites[id];
             if (entitySprite) {
                 entitySprite.destroy();
