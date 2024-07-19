@@ -10,6 +10,7 @@ export interface DessertComponents {
     facing?: FacingComponent;
     collision?: CollisionComponent;
     input?: InputComponent;
+    projectile?: ProjectileComponent;
 }
 
 export interface RenderComponent {
@@ -24,7 +25,7 @@ export interface FacingComponent {
 export interface MovementComponent {
     hasGravity?: boolean;
     killOnCollision?: boolean;
-    initialSpeed?: { x: number, y: number };
+    initialVelocity?: { x: number, y: number };
 }
 
 export interface PositionComponent {
@@ -40,6 +41,15 @@ export interface CollisionComponent {
         left: boolean;
         right: boolean;
     }
+}
+
+export interface ProjectileComponent {
+    // used to check max number allowed alive
+    type: string;
+    // shot speed
+    speed: number;
+    // how many ticks between shots
+    cooldown: number;
 }
 
 // just exists to say input controls it

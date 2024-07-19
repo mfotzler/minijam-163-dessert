@@ -21,10 +21,6 @@ export default class InputSystem implements System {
 		this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 		this.incrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 		this.decrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
-
-		scene.input.on('pointerdown', () => {
-			MessageBus.sendMessage(EventType.PLAYER_SHOOT, {});
-		});
 	}
 
 	step({}: StepData): Promise<void> | void {
@@ -47,6 +43,10 @@ export default class InputSystem implements System {
 				if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
 					body.velocity.y = -PHYSICS_CONSTANTS.PLAYER_JUMP_SPEED;
 				}
+
+				if (this.scene.input.mousePointer.primaryDown) {
+					MessageBus.sendMessage(EventType.PLAYER_SHOOT, { mousePos: this.scene.input.mousePointer.positionToCamera(this.scene.cameras.main) });
+				};
 			}
 		});
 	}
