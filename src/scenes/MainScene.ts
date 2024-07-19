@@ -7,9 +7,8 @@ import {ExampleComponents} from "../engine/example/components";
 import {MovementSystem} from "../engine/example/movementSystem";
 import {DessertComponents} from "../entities/types";
 import {Player} from "../entities/Player";
-import {cloneDeep} from "lodash";
-import {EventType} from "../engine/types";
 import RenderSystem from "../systems/RenderSystem";
+import InputSystem from "../systems/InputSystem";
 
 
 export default class MainScene extends BaseScene {
@@ -23,6 +22,7 @@ export default class MainScene extends BaseScene {
 		super.init();
 
 		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.entities));
+		this.engine.addSystem(new InputSystem(this, this.entities));
 	}
 
 	preload() {
