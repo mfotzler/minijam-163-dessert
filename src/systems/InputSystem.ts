@@ -4,6 +4,7 @@ import { EntityProvider } from '../engine/world/types';
 import { DessertComponents } from '../entities/types';
 import Key = Phaser.Input.Keyboard.Key;
 import MessageBus from '../messageBus/MessageBus';
+import GAME_CONSTANTS from '../utils/gameConstants';
 
 export default class InputSystem implements System {
 	private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -21,30 +22,27 @@ export default class InputSystem implements System {
 		this.decrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
 	}
 
-    step({}: StepData): Promise<void> | void {
-        this.entityProvider.entities.forEach((entity) => {
-            if (entity.render?.sprite) {
-                const body = entity.render.sprite.body;
-                if (this.scene.input.keyboard.checkDown(this.cursors.right)) {
-                    body.velocity.x = 150;
-                } else if (this.scene.input.keyboard.checkDown(this.cursors.left)) {
-                    body.velocity.x = -150;
-                } else {
-                    body.velocity.x = 0;
-                }
-							if (Phaser.Input.Keyboard.JustDown(this.incrementHealthKey))
-								MessageBus.sendMessage(EventType.PLAYER_HEAL, { heal: 1 });
-							if (Phaser.Input.Keyboard.JustDown(this.decrementHealthKey))
-								MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: 1 });
+	step({}: StepData): Promise<void> | void {
+		this.entityProvider.entities.forEach((entity) => {
+			if (entity.render?.sprite) {
+				const body = entity.render.sprite.body;
+				if (this.scene.input.keyboard.checkDown(this.cursors.right)) {
+					body.velocity.x = GAME_CONSTANTS.PLAYER_RUN_SPEED;
+				} else if (this.scene.input.keyboard.checkDown(this.cursors.left)) {
+					body.velocity.x = -GAME_CONSTANTS.PLAYER_RUN_SPEED;
+				} else {
+					body.velocity.x = 0;
+				}
+				if (Phaser.Input.Keyboard.JustDown(this.incrementHealthKey))
+					MessageBus.sendMessage(EventType.PLAYER_HEAL, { heal: 1 });
+				if (Phaser.Input.Keyboard.JustDown(this.decrementHealthKey))
+					MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: 1 });
 
-
-
-							// make him jump if the jump key is pressed and he's on the ground
-                if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
-                    body.velocity.y = -300;
-                }
-            }
-        });
-    }
-
+				// make him jump if the jump key is pressed and he's on the ground
+				if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
+					body.velocity.y = -GAME_CONSTANTS.PLAYER_JUMP_SPEED;
+				}
+			}
+		});
+	}
 }

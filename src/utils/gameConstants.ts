@@ -1,0 +1,7 @@
+﻿const GAME_CONSTANTS = {
+	PLAYER_RUN_SPEED: 210,
+	PLAYER_JUMP_SPEED: 500,
+	GRAVITY: 20
+};
+
+export default GAME_CONSTANTS;
