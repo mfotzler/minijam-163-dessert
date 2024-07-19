@@ -10,7 +10,6 @@ export class CollisionSystem implements System {
             if (!entity.collision) return;
 
             if (entity.collision.tiles) {
-                entitySprite.setPosition(entity.position.x, entity.position.y);
                 scene.physics.add.existing(entitySprite);
                 scene.physics.add.collider(entitySprite, world.wallLayer);
             }

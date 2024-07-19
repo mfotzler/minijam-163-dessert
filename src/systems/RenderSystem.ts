@@ -1,18 +1,19 @@
 import {EventType, StepData, System} from "../engine/types";
-import {DessertComponents, PositionComponent, RenderComponent} from "../entities/types";
+import {DessertComponents, RenderComponent} from "../entities/types";
 import {EntityCollection} from "../engine/world";
 import BaseScene from "../scenes/BaseScene";
 import {EventEmitter} from "events";
 
 export default class RenderSystem implements System {
-    private sprites: { [id: string]: Phaser.GameObjects.Sprite } = {};
+    private sprites: { [id: string]: Phaser.Physics.Arcade.Sprite } = {};
 
     constructor(private events: EventEmitter, private scene: BaseScene, private entityProvider: EntityCollection<DessertComponents>) {
         this.events = events;
 
-        this.events.on(EventType.ADD_ENTITY, ({ entity: { id, render } }) => {
+        this.events.on(EventType.ADD_ENTITY, ({ entity: { id, position, render } }) => {
             if (!this.sprites[id] && render) {
                 const entitySprite = this.createSprite(render);
+                entitySprite.setPosition(position?.x ?? 0, position?.y ?? 0);
                 this.sprites[id] = entitySprite;
 
                 this.events.emit(EventType.ENTITY_ADDED, { id, entitySprite });
@@ -28,36 +29,27 @@ export default class RenderSystem implements System {
         });
     }
 
-    private createSprite(render: RenderComponent): Phaser.GameObjects.Sprite {
+    private createSprite(render: RenderComponent): Phaser.Physics.Arcade.Sprite {
         return this.scene.physics.add.sprite(0, 0, 'textures', render.spriteKey);
     }
+
     step({ }: StepData) {
         this.entityProvider.entities.forEach((entity) => {
             const { render, position, movement } = entity;
 
             if (render && position) {
-                const entitySprite = this.getOrCreateSprite(entity.id, render);
-                entitySprite.setPosition(position.x, position.y);
-                if (movement) {
-                    // this is absolutely critical for arcade physics to work!
-                    // if we just set position only, the physics system will not calculate any collision because the entity is not moving
-                    entitySprite.body.velocity.x = movement.velocityX;
-                    entitySprite.body.velocity.y = movement.velocityY;
-                    entity.collision.blocked = { ...(entitySprite.body as Phaser.Physics.Arcade.Body).blocked };
-                }
+                this.ensureEntityHasSprite(entity.id, render);
             }
         });
     }
 
-    private getOrCreateSprite(entityId: string, render: RenderComponent): Phaser.GameObjects.Sprite {
-        let entitySprite: Phaser.GameObjects.Sprite;
+    private ensureEntityHasSprite(entityId: string, render: RenderComponent) {
         if (!this.sprites[entityId]) {
-            entitySprite = this.createSprite(render);
-            this.sprites[entityId] = entitySprite;
-        } else {
-            entitySprite = this.sprites[entityId];
+            this.sprites[entityId] = this.createSprite(render);
         }
-        return entitySprite;
+        if (!render.sprite) {
+            render.sprite = this.sprites[entityId];
+        }
         
     }
 }

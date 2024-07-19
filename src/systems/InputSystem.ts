@@ -21,15 +21,16 @@ export default class InputSystem implements System {
 		this.decrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
 	}
 
-    step(data: StepData): Promise<void> | void {
+    step({}: StepData): Promise<void> | void {
         this.entityProvider.entities.forEach((entity) => {
-            if (entity.position) {
+            if (entity.render?.sprite) {
+                const body = entity.render.sprite.body;
                 if (this.scene.input.keyboard.checkDown(this.cursors.right)) {
-                    entity.movement.velocityX = 0.1;
+                    body.velocity.x = 150;
                 } else if (this.scene.input.keyboard.checkDown(this.cursors.left)) {
-                    entity.movement.velocityX -= 0.1;
+                    body.velocity.x = -150;
                 } else {
-                    entity.movement.velocityX = 0;
+                    body.velocity.x = 0;
                 }
 							if (Phaser.Input.Keyboard.JustDown(this.incrementHealthKey))
 								MessageBus.sendMessage(EventType.PLAYER_HEAL, { heal: 1 });
@@ -40,7 +41,7 @@ export default class InputSystem implements System {
 
 							// make him jump if the jump key is pressed and he's on the ground
                 if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
-                    entity.movement.velocityY = -0.3;
+                    body.velocity.y = -300;
                 }
             }
         });

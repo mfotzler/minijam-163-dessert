@@ -8,6 +8,7 @@ export interface DessertComponents {
 
 export interface RenderComponent {
     spriteKey: string;
+    sprite?: Phaser.Physics.Arcade.Sprite;
 }
 
 export interface FacingComponent {
@@ -15,8 +16,6 @@ export interface FacingComponent {
 }
 
 export interface MovementComponent {
-    velocityX: number;
-    velocityY: number;
     killOnCollision?: boolean;
     baseSpeed?: number;
 }
