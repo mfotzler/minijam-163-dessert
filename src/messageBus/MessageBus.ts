@@ -2,6 +2,10 @@ import type IStorageProvider from './IStorageProvider';
 
 type SubscriberCallback<T = any> = (value?: T) => void | Promise<void>;
 
+type MessageBusSubscribeOptions = {
+	shouldInitializeWithLastMessage?: boolean;
+};
+
 class MessageBusConfiguration {
 	private noStorageMessages: { [key: string]: boolean } = {};
 
@@ -46,14 +50,34 @@ export default class MessageBus {
 		return value;
 	}
 
-	public static subscribe<T = any>(message: string, callback: (value: T) => void): () => void {
+	public static subscribe<T = any>(
+		message: string,
+		callback: (value: T) => void,
+		subscribeOptions: MessageBusSubscribeOptions | null = null
+	): () => void {
+		const normalizedOptions = this.normalizeSubscribeOptions(subscribeOptions);
+
 		if (!this.subscribers[message]) this.subscribers[message] = [];
 
 		this.subscribers[message].push(callback);
 
+		if (normalizedOptions.shouldInitializeWithLastMessage) {
+			let lastMessage = this.messageLog[message];
+			if (lastMessage) callback(lastMessage);
+		}
+
 		return () => {
 			this.subscribers[message] = this.subscribers[message].filter((s) => s != callback);
 		};
+	}
+	private static normalizeSubscribeOptions(
+		options: MessageBusSubscribeOptions | null
+	): MessageBusSubscribeOptions {
+		if (!options)
+			return {
+				shouldInitializeWithLastMessage: false
+			};
+		return options;
 	}
 
 	static sendMessage(message: string, value: any) {

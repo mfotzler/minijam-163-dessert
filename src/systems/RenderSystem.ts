@@ -51,5 +51,6 @@ export default class RenderSystem implements System {
             entitySprite = this.sprites[entityId];
         }
         return entitySprite;
+        
     }
 }
