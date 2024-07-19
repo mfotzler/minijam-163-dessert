@@ -5,7 +5,7 @@ import {cloneDeep} from "lodash";
 import {EventType} from "../engine/types";
 import {GameEngine} from "../engine/gameEngine";
 import {EntityCollection} from "../engine/world";
-import {MovementSystem} from "../engine/example/movementSystem";
+import {MovementSystem} from "../systems/MovementSystem";
 
 interface StartCallbackConfig {
     fadeInDuration?: number;
