@@ -2,7 +2,6 @@ import MainScene from './MainScene';
 import UIHelpers from '../UIHelpers';
 import BaseScene from './BaseScene';
 import TutorialScene from './TutorialScene';
-import Player from '../entities/Player';
 import Vacuum from '../entities/Vacuum';
 import Sprite = Phaser.GameObjects.Sprite;
 
@@ -17,7 +16,6 @@ export default class MainMenu extends BaseScene {
 		this.addPlayButton();
 		this.addTutorialButton();
 		this.addMeme();
-		this.addPlayer();
 		this.addCoins();
 		this.addVacuum();
 	}
@@ -28,14 +26,6 @@ export default class MainMenu extends BaseScene {
 	}
 
 	update(time: number, delta: number): void {
-		this.player.sprite.setRotation(0.0015 * time);
-	}
-
-	private player: Player;
-
-	private addPlayer() {
-		this.player = new Player(this, 350, 500, false);
-		this.player.sprite.scale = 2.5;
 	}
 
 	private vacuumSprite: Sprite;
@@ -87,7 +77,7 @@ export default class MainMenu extends BaseScene {
 
 	private addPlayButton() {
 		UIHelpers.addCenteredButton(this, 400, 'Play', () => {
-			this.scene.start(MainScene.key);
+			this.fadeToScene(MainScene.key, { fadeInDuration: 300 });
 		});
 	}
 

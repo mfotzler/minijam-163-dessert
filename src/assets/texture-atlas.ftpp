@@ -2,8 +2,14 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "C:\\Users\\mfotz\\projects\\minijam-155-wind\\public\\assets",
-  "images": [],
+  "savePath": "C:\\Users\\mfotz\\projects\\minijam-163-dessert\\public\\assets",
+  "images": [
+    {
+      "name": "cupcake.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/cupcake.png",
+      "folder": ""
+    }
+  ],
   "folders": [
     "C:/Users/mfotz/projects/minijam-155-wind/src/assets"
   ],
@@ -19,7 +25,7 @@
     "filter": "none",
     "exporter": "Phaser (hash)",
     "fileName": "pack-result",
-    "savePath": "C:\\Users\\mfotz\\projects\\minijam-155-wind\\public\\assets",
+    "savePath": "C:\\Users\\mfotz\\projects\\minijam-163-dessert\\public\\assets",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,
