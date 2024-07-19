@@ -192,6 +192,30 @@
         "y": 0.5
       }
     },
+    "candycane": {
+      "frame": {
+        "x": 1868,
+        "y": 70,
+        "w": 21,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 21,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 21,
+        "h": 52
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "coin-ball-l04": {
       "frame": {
         "x": 1868,
