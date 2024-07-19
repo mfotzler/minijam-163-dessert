@@ -80,7 +80,7 @@ export default class MainMenu extends BaseScene {
 				this.game.renderer.width / 2,
 				250,
 				'rubik',
-				'a game by bugvevo, slowback1, and mafcho'
+				'a game by tesserex, slowback1, and mafcho'
 			)
 			.setOrigin(0.5, 0.5);
 	}
