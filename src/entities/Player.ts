@@ -5,6 +5,9 @@ export const Player: DessertComponents = {
 	movement: { hasGravity: true},
 	facing: { direction: Direction.RIGHT },
 	collision: { tiles: true },
-	render: { spriteKey: 'cupcake' },
+	render: {
+		spriteKey: 'cupcake',
+		followWithCamera: true
+	},
 	input: {}
 }

@@ -15,6 +15,7 @@ export interface DessertComponents {
 export interface RenderComponent {
     spriteKey: string;
     sprite?: Phaser.Physics.Arcade.Sprite;
+    followWithCamera?: boolean;
 }
 
 export interface FacingComponent {
