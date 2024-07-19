@@ -4,7 +4,7 @@ import { EntityProvider } from '../engine/world/types';
 import { DessertComponents } from '../entities/types';
 import Key = Phaser.Input.Keyboard.Key;
 import MessageBus from '../messageBus/MessageBus';
-import GAME_CONSTANTS from '../utils/gameConstants';
+import PHYSICS_CONSTANTS from '../utils/physicsConstants';
 
 export default class InputSystem implements System {
 	private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -27,9 +27,9 @@ export default class InputSystem implements System {
 			if (entity.render?.sprite) {
 				const body = entity.render.sprite.body;
 				if (this.scene.input.keyboard.checkDown(this.cursors.right)) {
-					body.velocity.x = GAME_CONSTANTS.PLAYER_RUN_SPEED;
+					body.velocity.x = PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
 				} else if (this.scene.input.keyboard.checkDown(this.cursors.left)) {
-					body.velocity.x = -GAME_CONSTANTS.PLAYER_RUN_SPEED;
+					body.velocity.x = -PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
 				} else {
 					body.velocity.x = 0;
 				}
@@ -40,7 +40,7 @@ export default class InputSystem implements System {
 
 				// make him jump if the jump key is pressed and he's on the ground
 				if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
-					body.velocity.y = -GAME_CONSTANTS.PLAYER_JUMP_SPEED;
+					body.velocity.y = -PHYSICS_CONSTANTS.PLAYER_JUMP_SPEED;
 				}
 			}
 		});
