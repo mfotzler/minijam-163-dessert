@@ -40,10 +40,7 @@ export class MovementSystem implements System {
 
 					// delete the entity if it's way off screen
 					if (
-						sprite.y > this.scene.game.canvas.height + 100 ||
-						sprite.y < -100 ||
-						sprite.x > this.scene.game.canvas.width + 100 ||
-						sprite.x < -100
+						!this.scene.cameras.main.worldView.contains(sprite.x, sprite.y)
 					) {
 						MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
 					}
