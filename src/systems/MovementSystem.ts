@@ -4,7 +4,7 @@ import {EntityProvider} from "../engine/world/types";
 import BaseScene from "../scenes/BaseScene";
 
 export class MovementSystem implements System {
-    private gravity: number = 0.1;
+    private gravity: number = 0.3;
     constructor(private world: EntityProvider<DessertComponents>, private scene: BaseScene) {}
 
     step({ delta }: StepData) {

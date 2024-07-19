@@ -34,7 +34,7 @@ export default class MainScene extends BaseScene {
 			Player,
 			{
 				x: 350,
-				y: 500
+				y: 1000
 			});
 	}
 
