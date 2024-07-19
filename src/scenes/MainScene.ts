@@ -11,13 +11,13 @@ import PlayerHealthSystem from '../systems/PlayerHealthSystem';
 import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
 import { WeaponSystem } from '../systems/WeaponSystem';
+import HealthDisplay from '../entities/HealthDisplay';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
-	private currentHealth: number;
-	private healthText: Phaser.GameObjects.Text;
 	debugGraphics: Phaser.GameObjects.Graphics;
 	private world: World;
+	private HealthDisplay: HealthDisplay;
 
 	constructor() {
 		super({ key: MainScene.key });
@@ -35,14 +35,6 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new PlayerHealthSystem());
 		this.engine.addSystem(new WeaponSystem(this.world));
-
-		MessageBus.subscribe(
-			EventType.PLAYER_HEALTH,
-			(data) => {
-				this.currentHealth = data.health;
-			},
-			{ shouldInitializeWithLastMessage: true }
-		);
 	}
 
 	preload() {
@@ -50,13 +42,13 @@ export default class MainScene extends BaseScene {
 
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
-		
+
 		this.debugGraphics = this.add.graphics();
 	}
 
 	create(): void {
 		this.initializeMapAndCameras();
-		this.drawHealthValue();
+		this.HealthDisplay = new HealthDisplay(this);
 		this.world.addPlayer();
 	}
 
@@ -71,14 +63,5 @@ export default class MainScene extends BaseScene {
 
 	update(time: number, delta: number): void {
 		this.engine.step(delta);
-		this.updateHealthText();
-	}
-
-	drawHealthValue(): void {
-		this.healthText = this.add.text(30, 30, `Health: ${this.currentHealth}`, { fontSize: '32px' });
-	}
-
-	updateHealthText() {
-		this.healthText.setText(`Health: ${this.currentHealth}`);
 	}
 }
