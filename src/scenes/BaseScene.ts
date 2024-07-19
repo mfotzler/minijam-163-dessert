@@ -30,7 +30,7 @@ export default class BaseScene extends Phaser.Scene {
 
         this.entities = new EntityCollection(this.engine.events);
 
-        this.engine.addSystem(new MovementSystem(this.entities));
+        this.engine.addSystem(new MovementSystem(this.entities, this));
 
         this.events.on('create', () => this.start(this, this.scene.settings.data), this);
         this.events.on('ready', this.start, this);
