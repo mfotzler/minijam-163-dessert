@@ -15,6 +15,7 @@ import {EventType} from "../engine/types";
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
 	private wallLayer: Phaser.Tilemaps.TilemapLayer;
+	private testPlayer: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
 
 	constructor() {
 		super({ key: MainScene.key });
@@ -37,29 +38,35 @@ export default class MainScene extends BaseScene {
 
 
 	create(): void {
+		this.testPlayer = this.physics.add.sprite(500, 800, 'textures', 'cupcake');
+		this.testPlayer.setCollideWorldBounds(true);
+		this.initializeMapAndCameras();
 		this.createEntity(
 			Player,
 			{
 				x: 350,
 				y: 1000
 			});
-
-		this.initializeMapAndCameras();
 	}
 
 	private initializeMapAndCameras(): void {
 		const map = this.make.tilemap({ key: 'map1' });
-		const tileset = map.addTilesetImage('walls', 'tiles', 32, 32, 0, 0, 1);
+		const tileset = map.addTilesetImage('walls', 'tiles');
 		this.wallLayer = map.createLayer(0, tileset, 0, 0);
 		this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-		map.setCollision(1, true);
+		this.wallLayer.setCollisionByExclusion([], true);
 
-		this.engine.events.on(EventType.ENTITY_ADDED, ({ entitySprite }) => {
+		this.physics.add.collider(this.testPlayer, this.wallLayer);
+
+		this.engine.events.on(EventType.ENTITY_ADDED, ({ id, entitySprite }) => {
+			this.physics.add.existing(entitySprite);
 			this.physics.add.collider(entitySprite, this.wallLayer);
 		});
+		this.physics.world.createDebugGraphic();
 	}
 
 	update(time: number, delta: number): void {
 		this.engine.step(delta);
+		this.testPlayer.y += 1;
 	}
 }

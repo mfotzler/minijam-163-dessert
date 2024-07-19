@@ -15,7 +15,7 @@ export default class RenderSystem implements System {
                 const entitySprite = this.createSprite(render);
                 this.sprites[id] = entitySprite;
 
-                this.events.emit(EventType.ENTITY_ADDED, { entitySprite });
+                this.events.emit(EventType.ENTITY_ADDED, { id, entitySprite });
             }
         });
 
@@ -38,7 +38,6 @@ export default class RenderSystem implements System {
             if (render && position) {
                 const entitySprite = this.getOrCreateSprite(entity.id, render);
                 entitySprite.setPosition(position.x, position.y);
-                entitySprite.update(entity);
             }
         });
     }
