@@ -10,11 +10,10 @@ import { CollisionSystem } from '../systems/CollisionSystem';
 import PlayerHealthSystem from '../systems/PlayerHealthSystem';
 import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
+import { WeaponSystem } from '../systems/WeaponSystem';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
-	private wallLayer: Phaser.Tilemaps.TilemapLayer;
-	private testPlayer: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
 	private currentHealth: number;
 	private healthText: Phaser.GameObjects.Text;
 	debugGraphics: Phaser.GameObjects.Graphics;
@@ -35,6 +34,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.world.entityProvider));
 		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new PlayerHealthSystem());
+		this.engine.addSystem(new WeaponSystem(this.world));
 
 		MessageBus.subscribe(
 			EventType.PLAYER_HEALTH,
@@ -50,17 +50,14 @@ export default class MainScene extends BaseScene {
 
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
+		
+		this.debugGraphics = this.add.graphics();
 	}
 
 	create(): void {
-		this.debugGraphics = this.add.graphics();
 		this.initializeMapAndCameras();
-		this.world.createEntity(Player, {
-			x: 350,
-			y: 1000
-		});
-
 		this.drawHealthValue();
+		this.world.addPlayer();
 	}
 
 	private initializeMapAndCameras(): void {

@@ -1,9 +1,15 @@
+export enum Direction {
+    LEFT = 0,
+    RIGHT = 1
+}
+
 export interface DessertComponents {
     position?: PositionComponent;
     movement?: MovementComponent;
     render?: RenderComponent;
     facing?: FacingComponent;
     collision?: CollisionComponent;
+    input?: InputComponent;
 }
 
 export interface RenderComponent {
@@ -12,12 +18,13 @@ export interface RenderComponent {
 }
 
 export interface FacingComponent {
-    direction: number;
+    direction: Direction;
 }
 
 export interface MovementComponent {
+    hasGravity?: boolean;
     killOnCollision?: boolean;
-    baseSpeed?: number;
+    initialSpeed?: { x: number, y: number };
 }
 
 export interface PositionComponent {
@@ -34,3 +41,6 @@ export interface CollisionComponent {
         right: boolean;
     }
 }
+
+// just exists to say input controls it
+export interface InputComponent {}

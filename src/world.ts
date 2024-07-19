@@ -4,6 +4,7 @@ import { EventType } from "./engine/types";
 import { EntityCollection } from "./engine/world";
 import { DessertComponents } from "./entities/types";
 import BaseScene from "./scenes/BaseScene";
+import { Player } from "./entities/Player";
 
 export interface Point {
     x: number,
@@ -14,6 +15,7 @@ export class World {
     entityProvider: EntityCollection<DessertComponents>;
     map: Phaser.Tilemaps.Tilemap;
     wallLayer: Phaser.Tilemaps.TilemapLayer;
+    playerId: string;
 
     constructor(private scene: BaseScene, private engine: GameEngine) {
         this.entityProvider = new EntityCollection(this.engine.events);
@@ -26,10 +28,18 @@ export class World {
 		this.wallLayer.setCollision(1, true);
 	}
 
+    addPlayer() {
+        this.playerId = this.createEntity(Player, {
+			x: 350,
+			y: 1000
+		});
+    }
+
     createEntity(
         base: DessertComponents,
         { x, y }: Point,
-    ) {
+    ): string {
+        const id = this.entityProvider.createEntityId();
         this.engine.events.emit(EventType.ADD_ENTITY, {
             entity: {
                 ...cloneDeep(base),
@@ -38,8 +48,9 @@ export class World {
                     x,
                     y
                 },
-                id: this.entityProvider.createEntityId(),
+                id,
             },
         });
+        return id;
     }
 }

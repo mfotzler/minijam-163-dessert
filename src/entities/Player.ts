@@ -1,8 +1,10 @@
-import {DessertComponents} from "./types";
+import {DessertComponents, Direction} from "./types";
 
 export const Player: DessertComponents = {
 	position: { x: 350, y: 1000 },
-	movement: {},
+	movement: { hasGravity: true},
+	facing: { direction: Direction.RIGHT },
 	collision: { tiles: true },
-	render: { spriteKey: 'cupcake' }
+	render: { spriteKey: 'cupcake' },
+	input: {}
 }
