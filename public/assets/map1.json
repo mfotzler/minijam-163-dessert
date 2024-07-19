@@ -55,8 +55,17 @@
  "tileheight":32,
  "tilesets":[
         {
+         "columns":1,
          "firstgid":1,
-         "source":"..\/..\/src\/assets\/walls.tsx"
+         "image":"..\/..\/src\/assets\/wall.png",
+         "imageheight":32,
+         "imagewidth":32,
+         "margin":0,
+         "name":"walls",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
