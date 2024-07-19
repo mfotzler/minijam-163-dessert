@@ -1,14 +1,15 @@
 import * as Phaser from 'phaser';
 import BaseScene from './BaseScene';
-import {GameEngine} from "../engine/gameEngine";
-import {EntityCollection} from "../engine/world";
-import {Player} from "../entities/Player";
-import RenderSystem from "../systems/RenderSystem";
-import InputSystem from "../systems/InputSystem";
+import { GameEngine } from '../engine/gameEngine';
+import { Player } from '../entities/Player';
+import RenderSystem from '../systems/RenderSystem';
+import InputSystem from '../systems/InputSystem';
 import { MovementSystem } from '../systems/MovementSystem';
 import { World } from '../world';
 import { CollisionSystem } from '../systems/CollisionSystem';
-
+import PlayerHealthSystem from '../systems/PlayerHealthSystem';
+import MessageBus from '../messageBus/MessageBus';
+import { EventType } from '../engine/types';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -29,13 +30,19 @@ export default class MainScene extends BaseScene {
 		this.engine = new GameEngine();
 		this.world = new World(this, this.engine);
 
-        this.engine.addSystem(new MovementSystem(this.world.entityProvider, this));
+		this.engine.addSystem(new MovementSystem(this.world.entityProvider, this));
 		this.engine.addSystem(new CollisionSystem(this, this.engine.events, this.world));
 		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.world.entityProvider));
 		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
-		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.entities));
-		this.engine.addSystem(new InputSystem(this, this.entities));
 		this.engine.addSystem(new PlayerHealthSystem());
+
+		MessageBus.subscribe(
+			EventType.PLAYER_HEALTH,
+			(data) => {
+				this.currentHealth = data.health;
+			},
+			{ shouldInitializeWithLastMessage: true }
+		);
 	}
 
 	preload() {
@@ -48,12 +55,10 @@ export default class MainScene extends BaseScene {
 	create(): void {
 		this.debugGraphics = this.add.graphics();
 		this.initializeMapAndCameras();
-		this.world.createEntity(
-			Player,
-			{
-				x: 350,
-				y: 1000
-			});
+		this.world.createEntity(Player, {
+			x: 350,
+			y: 1000
+		});
 
 		this.drawHealthValue();
 	}
@@ -63,7 +68,7 @@ export default class MainScene extends BaseScene {
 
 		this.cameras.main.setBounds(0, 0, this.world.map.widthInPixels, this.world.map.heightInPixels);
 		this.world.map.renderDebug(this.debugGraphics, {
-			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
+			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255)
 		});
 	}
 
