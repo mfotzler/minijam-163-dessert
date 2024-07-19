@@ -1,5 +1,11 @@
 import * as Phaser from 'phaser';
 import MessageBus from "../messageBus/MessageBus";
+import {DessertComponents} from "../entities/types";
+import {cloneDeep} from "lodash";
+import {EventType} from "../engine/types";
+import {GameEngine} from "../engine/gameEngine";
+import {EntityCollection} from "../engine/world";
+import {MovementSystem} from "../engine/example/movementSystem";
 
 interface StartCallbackConfig {
     fadeInDuration?: number;
@@ -7,6 +13,8 @@ interface StartCallbackConfig {
 
 export default class BaseScene extends Phaser.Scene {
     private isFading = false;
+    protected engine: GameEngine;
+    protected entities: EntityCollection<DessertComponents>;
 
     preload():void {
         this.load.atlas('textures', 'assets/texture.png', 'assets/texture.json');
@@ -17,6 +25,12 @@ export default class BaseScene extends Phaser.Scene {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
     init(data?: unknown) {
         MessageBus.clearAllSubscribers();
+
+        this.engine = new GameEngine();
+
+        this.entities = new EntityCollection(this.engine.events);
+
+        this.engine.addSystem(new MovementSystem(this.entities));
 
         this.events.on('create', () => this.start(this, this.scene.settings.data), this);
         this.events.on('ready', this.start, this);
@@ -50,4 +64,26 @@ export default class BaseScene extends Phaser.Scene {
             this.input.keyboard.enabled = true;
         }
     }
+
+    protected createEntity(
+        base: DessertComponents,
+        { x, y }: Point,
+    ) {
+        this.engine.events.emit(EventType.ADD_ENTITY, {
+            entity: {
+                ...cloneDeep(base),
+                position: {
+                    ...base.position,
+                    x,
+                    y
+                },
+                id: this.entities.createEntityId(),
+            },
+        });
+    }
+}
+
+export interface Point {
+    x: number,
+    y: number
 }

@@ -6,21 +6,23 @@ import {EntityCollection} from "../engine/world";
 import {ExampleComponents} from "../engine/example/components";
 import {MovementSystem} from "../engine/example/movementSystem";
 import {DessertComponents} from "../entities/types";
+import {Player} from "../entities/Player";
+import {cloneDeep} from "lodash";
+import {EventType} from "../engine/types";
+import RenderSystem from "../systems/RenderSystem";
 
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
-	private engine: GameEngine;
-	private entities: EntityCollection<DessertComponents>;
 
 	constructor() {
 		super({ key: MainScene.key });
+	}
 
-		this.engine = new GameEngine();
+	init() {
+		super.init();
 
-		this.entities = new EntityCollection(this.engine.events);
-
-		this.engine.addSystem(new MovementSystem(this.entities));
+		this.engine.addSystem(new RenderSystem(this.engine.events, this, this.entities));
 	}
 
 	preload() {
@@ -28,7 +30,12 @@ export default class MainScene extends BaseScene {
 	}
 
 	create(): void {
-		let player = this.add.sprite(130, 140, 'textures', 'cupcake');
+		this.createEntity(
+			Player,
+			{
+				x: 350,
+				y: 500
+			});
 	}
 
 	update(time: number, delta: number): void {
