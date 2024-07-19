@@ -9,10 +9,12 @@ import {DessertComponents} from "../entities/types";
 import {Player} from "../entities/Player";
 import RenderSystem from "../systems/RenderSystem";
 import InputSystem from "../systems/InputSystem";
+import {EventType} from "../engine/types";
 
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
+	private wallLayer: Phaser.Tilemaps.TilemapLayer;
 
 	constructor() {
 		super({ key: MainScene.key });
@@ -27,7 +29,12 @@ export default class MainScene extends BaseScene {
 
 	preload() {
 		super.preload();
+
+		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
+		this.load.image('tiles', 'assets/wall.png');
 	}
+
+
 
 	create(): void {
 		this.createEntity(
@@ -36,6 +43,20 @@ export default class MainScene extends BaseScene {
 				x: 350,
 				y: 1000
 			});
+
+		this.initializeMapAndCameras();
+	}
+
+	private initializeMapAndCameras(): void {
+		const map = this.make.tilemap({ key: 'map1' });
+		const tileset = map.addTilesetImage('walls', 'tiles', 32, 32, 0, 0, 1);
+		this.wallLayer = map.createLayer(0, tileset, 0, 0);
+		this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+		map.setCollision(1, true);
+
+		this.engine.events.on(EventType.ENTITY_ADDED, ({ entitySprite }) => {
+			this.physics.add.collider(entitySprite, this.wallLayer);
+		});
 	}
 
 	update(time: number, delta: number): void {

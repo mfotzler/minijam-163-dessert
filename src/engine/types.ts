@@ -30,8 +30,9 @@ export enum EventType {
    * Requests that an entity be added to the world.
    * Do not use this to modify the entity as it will be deep cloned first.
    */
-  ADD_ENTITY = 'entityAdded',
+  ADD_ENTITY = 'addEntity',
   DELETE_ENTITY = 'deleteEntity',
   ENTITY_DELETED = 'entityDeleted',
-  ENTITY_PREINIT = 'entityPreInit'
+  ENTITY_PREINIT = 'entityPreInit',
+  ENTITY_ADDED = 'entityAdded',
 }

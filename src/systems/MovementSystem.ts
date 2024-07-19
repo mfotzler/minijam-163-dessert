@@ -5,7 +5,9 @@ import BaseScene from "../scenes/BaseScene";
 
 export class MovementSystem implements System {
     private gravity: number = 0.3;
-    constructor(private world: EntityProvider<DessertComponents>, private scene: BaseScene) {}
+    constructor(private world: EntityProvider<DessertComponents>, private scene: BaseScene) {
+
+    }
 
     step({ delta }: StepData) {
         const deltaInSeconds = delta / 1000;

@@ -1,17 +1,21 @@
 import {EventType, StepData, System} from "../engine/types";
 import {DessertComponents, PositionComponent, RenderComponent} from "../entities/types";
 import {EntityCollection} from "../engine/world";
+import BaseScene from "../scenes/BaseScene";
+import {EventEmitter} from "events";
 
 export default class RenderSystem implements System {
     private sprites: { [id: string]: Phaser.GameObjects.Sprite } = {};
 
-    constructor(private events, private scene, private entityProvider: EntityCollection<DessertComponents>) {
+    constructor(private events: EventEmitter, private scene: BaseScene, private entityProvider: EntityCollection<DessertComponents>) {
         this.events = events;
 
         this.events.on(EventType.ADD_ENTITY, ({ entity: { id, render } }) => {
             if (!this.sprites[id] && render) {
                 const entitySprite = this.createSprite(render);
                 this.sprites[id] = entitySprite;
+
+                this.events.emit(EventType.ENTITY_ADDED, { entitySprite });
             }
         });
 
