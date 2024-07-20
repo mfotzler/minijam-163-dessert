@@ -2,7 +2,7 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "D:\\Projects\\minijam-163-dessert\\src\\assets",
+  "savePath": "D:\\Projects\\minijam-163-dessert\\public\\assets",
   "images": [
     {
       "name": "asparagus-potato-head.png",
@@ -333,7 +333,7 @@
     "filter": "none",
     "exporter": "Phaser (hash)",
     "fileName": "pack-result",
-    "savePath": "D:\\Projects\\minijam-163-dessert\\src\\assets",
+    "savePath": "D:\\Projects\\minijam-163-dessert\\public\\assets",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,
