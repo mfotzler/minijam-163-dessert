@@ -5,8 +5,53 @@
   "savePath": "C:\\Users\\mfotz\\projects\\minijam-163-dessert\\public\\assets",
   "images": [
     {
+      "name": "asparagus-potato-head.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/asparagus-potato-head.png",
+      "folder": ""
+    },
+    {
+      "name": "candycane.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/candycane.png",
+      "folder": ""
+    },
+    {
       "name": "cupcake.png",
       "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/cupcake.png",
+      "folder": ""
+    },
+    {
+      "name": "frosting.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/frosting.png",
+      "folder": ""
+    },
+    {
+      "name": "maincharacter1.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter1.png",
+      "folder": ""
+    },
+    {
+      "name": "maincharacter2.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter2.png",
+      "folder": ""
+    },
+    {
+      "name": "maincharacter3.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter3.png",
+      "folder": ""
+    },
+    {
+      "name": "maincharacter4.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter4.png",
+      "folder": ""
+    },
+    {
+      "name": "maincharacter5.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter5.png",
+      "folder": ""
+    },
+    {
+      "name": "sprinkle.png",
+      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprinkle.png",
       "folder": ""
     }
   ],
