@@ -19,7 +19,6 @@ export default class MainMenu extends BaseScene {
 
 	override preload() {
 		super.preload();
-		this.load.image('meme', 'assets/title_meme.png');
 	}
 
 	update(time: number, delta: number): void {
