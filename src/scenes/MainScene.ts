@@ -42,6 +42,7 @@ export default class MainScene extends BaseScene {
 
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
+        this.load.image('background', 'assets/background.png');
 
 		this.debugGraphics = this.add.graphics();
 	}
@@ -56,9 +57,9 @@ export default class MainScene extends BaseScene {
 		this.world.initializeMap('map1');
 
 		this.cameras.main.setBounds(0, 0, this.world.map.widthInPixels, this.world.map.heightInPixels);
-		this.world.map.renderDebug(this.debugGraphics, {
-			collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255)
-		});
+		//this.world.map.renderDebug(this.debugGraphics, {
+		//	collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255)
+		//});
 	}
 
 	update(time: number, delta: number): void {

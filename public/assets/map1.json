@@ -51,23 +51,29 @@
  "nextobjectid":1,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.11.0",
- "tileheight":32,
+ "tiledversion":"1.10.2",
+ "tileheight":16,
  "tilesets":[
         {
-         "columns":1,
+         "columns":2,
          "firstgid":1,
+         "grid":
+            {
+             "height":8,
+             "orientation":"orthogonal",
+             "width":8
+            },
          "image":"..\/..\/src\/assets\/wall.png",
          "imageheight":32,
          "imagewidth":32,
          "margin":0,
          "name":"walls",
          "spacing":0,
-         "tilecount":1,
-         "tileheight":32,
-         "tilewidth":32
+         "tilecount":16,
+         "tileheight":16,
+         "tilewidth":16
         }],
- "tilewidth":32,
+ "tilewidth":16,
  "type":"map",
  "version":"1.10",
  "width":250

@@ -1,5 +1,4 @@
 import { cloneDeep } from "lodash";
-import { GameEngine } from "./engine/gameEngine";
 import { EventType } from "./engine/types";
 import { EntityCollection } from "./engine/world";
 import { DessertComponents } from "./entities/types";
@@ -27,12 +26,15 @@ export class World {
 		const tileset = this.map.addTilesetImage('walls', 'tiles');
 		this.wallLayer = this.map.createLayer(0, tileset, 0, 0);
 		this.wallLayer.setCollision(1, true);
+
+        this.scene.add.tileSprite(0, 0, this.map.widthInPixels, 256, 'background')
+            .setScale(4).setOrigin(0, 0).setDepth(-1);
 	}
 
     addPlayer() {
         this.playerId = this.createEntity(Player, {
-			x: 350,
-			y: 1000
+			x: 100,
+			y: 200
 		});
     }
 

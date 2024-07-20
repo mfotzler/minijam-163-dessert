@@ -15,12 +15,14 @@ new Phaser.Game({
 	backgroundColor: '#aaaaee',
 	title: 'Something About Wind!',
 	scale: {
-		width: 1920,
-		height: 1080,
-		mode: Phaser.Scale.FIT,
-		autoCenter: Phaser.Scale.CENTER_BOTH
+		width: 1024,
+		height: 512,
+		mode: Phaser.Scale.ScaleModes.FIT,
+		autoCenter: Phaser.Scale.Center.CENTER_BOTH
 	},
+	zoom: 1,
 	scene: [GameScene, MainScene, GameOver, TutorialScene, GameWon],
+	pixelArt: true,
 	physics: {
 		default: 'arcade',
 		arcade: {

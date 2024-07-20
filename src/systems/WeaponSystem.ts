@@ -45,6 +45,7 @@ export class WeaponSystem implements System {
 
     step() {
         const playerEntity = this.world.entityProvider.getEntity(this.world.playerId);
+        if (!playerEntity?.player) return;
         playerEntity.player.shotCooldown = Math.max(0, playerEntity.player.shotCooldown - 1);
     }
 };
