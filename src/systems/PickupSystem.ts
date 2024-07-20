@@ -18,8 +18,11 @@ export class PickupSystem implements System {
 			const { weaponType } = pickupEntity.weaponPickup;
 			playerEntity.player.currentWeapon = weaponType;
 
-			this.getSfx('weapon-pickup')?.play();
-			this.getSfx(`get-${weaponType}`)?.play({ delay: 0.25 });
+			MessageBus.sendMessage(EventType.SOUND_EFFECT_PLAY, { key: 'weapon-pickup' });
+			MessageBus.sendMessage(EventType.SOUND_EFFECT_PLAY, {
+				key: `get-${weaponType}`,
+				delay: 0.25
+			});
 
 			MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
 		});

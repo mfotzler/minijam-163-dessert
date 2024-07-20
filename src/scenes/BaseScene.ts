@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 import MessageBus from '../messageBus/MessageBus';
 import { GameEngine } from '../engine/gameEngine';
-import { musicTracks } from '../utils/musicTracks';
+import { musicTracks, soundEffectTracks, voiceClipTracks } from '../utils/soundTracks';
 
 interface StartCallbackConfig {
 	fadeInDuration?: number;
@@ -17,6 +17,14 @@ export default class BaseScene extends Phaser.Scene {
 
 		for (const track of musicTracks) {
 			this.load.audio(track, `assets/music/${track}.mp3`);
+		}
+
+		for (const track of soundEffectTracks) {
+			this.load.audio(track, `assets/sfx/${track}.wav`);
+		}
+
+		for (const track of voiceClipTracks) {
+			this.load.audio(`get-${track}`, `assets/sfx/${track}.m4a`);
 		}
 	}
 

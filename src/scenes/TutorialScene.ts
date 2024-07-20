@@ -7,7 +7,7 @@ import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
 import { GameEngine } from '../engine/gameEngine';
 import { MusicSystem } from '../systems/MusicSystem';
-import { musicTracks } from '../utils/musicTracks';
+import { musicTracks } from '../utils/soundTracks';
 
 export default class TutorialScene extends BaseScene {
 	static readonly key = 'Tutorial';

@@ -1,7 +1,7 @@
 ﻿import { EventType, StepData, System } from '../engine/types';
 import MessageBus from '../messageBus/MessageBus';
 import BaseScene from '../scenes/BaseScene';
-import { musicTracks } from '../utils/musicTracks';
+import { musicTracks } from '../utils/soundTracks';
 
 export class MusicSystem implements System {
 	private currentTrack: string | null = null;

@@ -16,6 +16,7 @@ import { SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
 import { MusicSystem } from '../systems/MusicSystem';
+import { SoundEffectSystem } from '../systems/SoundEffectSystem';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -42,6 +43,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new PickupSystem(this, this.world));
 		this.engine.addSystem(new MeleeSystem(this.world));
 		this.engine.addSystem(new MusicSystem(this));
+		this.engine.addSystem(new SoundEffectSystem(this));
 	}
 
 	preload() {
@@ -50,8 +52,6 @@ export default class MainScene extends BaseScene {
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
 		this.load.image('background', 'assets/background.png');
-		this.load.audio('weapon-pickup', 'assets/audio/weapon-pickup.wav');
-		this.load.audio('get-sprinkle', 'assets/audio/sprinkle.m4a');
 
 		this.debugGraphics = this.add.graphics();
 	}

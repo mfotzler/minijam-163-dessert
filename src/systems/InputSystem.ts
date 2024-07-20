@@ -48,6 +48,7 @@ export default class InputSystem implements System {
 				// make him jump if the jump key is pressed and he's on the ground
 				if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
 					body.velocity.y = -PHYSICS_CONSTANTS.PLAYER_JUMP_SPEED;
+					MessageBus.sendMessage(EventType.SOUND_EFFECT_PLAY, { key: 'hop_2' });
 				}
 
 				if (this.scene.input.keyboard.checkDown(this.meleeKey)) {
