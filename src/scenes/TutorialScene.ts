@@ -7,15 +7,15 @@ import Container = Phaser.GameObjects.Container;
 export default class TutorialScene extends BaseScene {
 	static readonly key = 'Tutorial';
 	private music: Phaser.Sound.BaseSound;
+	private background: Phaser.GameObjects.TileSprite;
 	constructor() {
 		super({ key: TutorialScene.key });
 	}
 
 	create(): void {
-		this.addTitle();
+		this.addGraphic();
 		this.addPlayButton();
 		this.playSound();
-		this.addGraphic();
 
 		const dialogueBox = new DialogueBox(this.scene.scene, 0, this.renderer.height - DialogueBox.height, [
 			{
@@ -57,16 +57,18 @@ export default class TutorialScene extends BaseScene {
 	}
 
 	addGraphic() {
-		let image = this.add.image(this.renderer.width / 2 + 250, 50, 'tutorial-graphic');
-		image.setOrigin(0.5, 0);
-		image.scale = 0.7;
+		this.background = this.add.tileSprite(0, 0, this.renderer.width, this.renderer.width, 'background')
+			.setScale(3).setOrigin(0, 0).setDepth(-1);
 	}
 
-	update(time: number, delta: number): void {}
+	update(time: number, delta: number): void {
+		this.background.setTilePosition(time / 75, 0);
+	}
 
 	override preload() {
 		super.preload();
 
+		this.load.image('background', 'assets/background.png');
 		this.load.audio('lil_blower_san_theme', 'assets/lil_blower_san_theme.mp3');
 		this.load.image('tutorial-graphic', 'assets/tutorial.png');
 	}
@@ -77,12 +79,8 @@ export default class TutorialScene extends BaseScene {
 		this.music.play({ loop: true });
 	}
 
-	private addTitle() {
-		this.add.bitmapText(this.game.renderer.width / 2, 250, 'rubik', 'Tutorial').setOrigin(0.5, 0.5);
-	}
-
 	private addPlayButton() {
-		UIHelpers.addButton(this, 320, 400, 'Main Menu', () => {
+		UIHelpers.addButton(this, this.renderer.width / 2, 50, 'Back to Main Menu', () => {
 			this.music.stop();
 			this.scene.start(MainMenu.key);
 		});
