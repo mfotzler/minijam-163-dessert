@@ -40,7 +40,10 @@ export class MeleeSystem implements System {
 					movement: {
 						...weapon.movement,
 						initialVelocity,
-						rotation: { velocity: this.getWeaponRotation(direction) }
+						rotation: {
+							...weapon.movement.rotation,
+							velocity: this.getWeaponRotation(direction, weapon.movement.rotation.velocity)
+						}
 					}
 				},
 				{ x: this.getWeaponX(direction, render?.sprite?.x ?? 0), y: render?.sprite?.y + 3 ?? 3 }
@@ -48,8 +51,8 @@ export class MeleeSystem implements System {
 		});
 	}
 
-	private getWeaponRotation(facing: Direction) {
-		return facing === Direction.RIGHT ? 90 : -90;
+	private getWeaponRotation(facing: Direction, velocity: number = 240) {
+		return facing === Direction.RIGHT ? velocity : -velocity;
 	}
 
 	private getWeaponX(facing: Direction, initialX: number): number {

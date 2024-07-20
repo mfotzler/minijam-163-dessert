@@ -34,7 +34,7 @@ export interface MovementComponent {
 	hasGravity?: boolean;
 	killOnCollision?: boolean;
 	initialVelocity?: { x: number; y: number };
-	rotation?: { velocity?: number; startAngle?: number };
+	rotation?: { velocity?: number; startAngle?: number; origin?: { x: number; y: number } };
 }
 
 export interface PositionComponent {

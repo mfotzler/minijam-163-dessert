@@ -34,6 +34,10 @@ export default class RenderSystem implements System {
 						entitySprite.setAngularVelocity(movement.rotation.velocity);
 					}
 
+					if (movement?.rotation?.origin) {
+						entitySprite.setOrigin(movement.rotation.origin.x, movement.rotation.origin.y);
+					}
+
 					this.sprites[id] = entitySprite;
 
 					MessageBus.sendMessage(EventType.ENTITY_ADDED, { id, entitySprite });
