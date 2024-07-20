@@ -816,9 +816,33 @@
         "y": 0.5
       }
     },
-    "cupcake": {
+    "sprinkle": {
       "frame": {
         "x": 151,
+        "y": 240,
+        "w": 48,
+        "h": 22
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 22
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "cupcake": {
+      "frame": {
+        "x": 203,
         "y": 240,
         "w": 42,
         "h": 60
@@ -842,8 +866,8 @@
     },
     "vacuum01": {
       "frame": {
-        "x": 2,
-        "y": 289,
+        "x": 151,
+        "y": 266,
         "w": 36,
         "h": 180
       },
@@ -866,8 +890,8 @@
     },
     "vacuum02": {
       "frame": {
-        "x": 42,
-        "y": 289,
+        "x": 2,
+        "y": 386,
         "w": 36,
         "h": 180
       },
@@ -882,6 +906,30 @@
       "sourceSize": {
         "w": 36,
         "h": 180
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "frosting": {
+      "frame": {
+        "x": 2,
+        "y": 289,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
       },
       "pivot": {
         "x": 0.5,
@@ -920,7 +968,7 @@
     "format": "RGBA8888",
     "size": {
       "w": 2042,
-      "h": 532
+      "h": 568
     },
     "scale": 1
   }
