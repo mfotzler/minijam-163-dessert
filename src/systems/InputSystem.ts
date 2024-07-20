@@ -11,6 +11,7 @@ export default class InputSystem implements System {
 	private jumpKey: Phaser.Input.Keyboard.Key;
 	private incrementHealthKey: Phaser.Input.Keyboard.Key;
 	private decrementHealthKey: Phaser.Input.Keyboard.Key;
+	private meleeKey: Phaser.Input.Keyboard.Key;
 
 	constructor(
 		private scene: Phaser.Scene,
@@ -21,7 +22,10 @@ export default class InputSystem implements System {
 		this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 		this.incrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 		this.decrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+		this.meleeKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
 	}
+
+	private facing: 'left' | 'right' = 'right';
 
 	step({}: StepData): Promise<void> | void {
 		this.entityProvider.entities.forEach((entity) => {
@@ -29,8 +33,10 @@ export default class InputSystem implements System {
 				const body = entity.render.sprite.body;
 				if (this.rightKey.isDown) {
 					body.velocity.x = PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
+					this.facing = 'right';
 				} else if (this.leftKey.isDown) {
 					body.velocity.x = -PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
+					this.facing = 'left';
 				} else {
 					body.velocity.x = 0;
 				}
@@ -42,6 +48,10 @@ export default class InputSystem implements System {
 				// make him jump if the jump key is pressed and he's on the ground
 				if (Phaser.Input.Keyboard.JustDown(this.jumpKey) && entity.collision?.blocked?.down) {
 					body.velocity.y = -PHYSICS_CONSTANTS.PLAYER_JUMP_SPEED;
+				}
+
+				if (this.scene.input.keyboard.checkDown(this.meleeKey)) {
+					MessageBus.sendMessage(EventType.PLAYER_MELEE, this.facing);
 				}
 
 				if (this.scene.input.mousePointer.primaryDown) {

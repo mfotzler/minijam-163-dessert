@@ -14,6 +14,7 @@ import { WeaponSystem } from '../systems/WeaponSystem';
 import HealthDisplay from '../entities/HealthDisplay';
 import { SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
+import { MeleeSystem } from '../systems/MeleeSystem';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -38,6 +39,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new PlayerHealthSystem());
 		this.engine.addSystem(new WeaponSystem(this.world));
 		this.engine.addSystem(new PickupSystem(this.world));
+		this.engine.addSystem(new MeleeSystem(this.world));
 	}
 
 	preload() {
