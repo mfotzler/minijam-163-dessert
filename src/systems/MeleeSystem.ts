@@ -37,7 +37,7 @@ export class MeleeSystem implements System {
 					movement: {
 						...weapon.movement,
 						initialVelocity,
-						rotation: { velocity: this.getWeaponRotation(facing), y: 0 }
+						rotation: { velocity: this.getWeaponRotation(facing) }
 					}
 				},
 				{ x: this.getWeaponX(facing, render?.sprite?.x ?? 0), y: render?.sprite?.y + 3 ?? 3 }
