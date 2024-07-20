@@ -15,6 +15,7 @@ export interface DessertComponents {
 	input?: InputComponent;
 	projectile?: ProjectileComponent;
 	weaponPickup?: WeaponPickupComponent;
+	enemy?: EnemyComponent;
 }
 
 export interface RenderComponent {
@@ -76,4 +77,13 @@ export interface PlayerComponent {
 
 export interface WeaponPickupComponent {
 	weaponType: WeaponType;
+}
+
+export interface EnemyComponent {
+	health: number;
+	damage: number;
+	type: string;
+	aiState?: string;
+	// for tracking how long the enemy has been in the current state
+	stateTime?: number;
 }

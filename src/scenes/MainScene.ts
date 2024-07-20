@@ -15,6 +15,8 @@ import HealthDisplay from '../entities/HealthDisplay';
 import { CoinShotPickup, SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
+import { Asparatato } from '../entities/Enemies';
+import { EnemySystem } from '../systems/EnemySystem';
 import { MusicSystem } from '../systems/MusicSystem';
 import { SoundEffectSystem } from '../systems/SoundEffectSystem';
 import { clone, cloneDeep } from 'lodash';
@@ -44,6 +46,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new WeaponSystem(this.world));
 		this.engine.addSystem(new PickupSystem(this, this.world));
 		this.engine.addSystem(new MeleeSystem(this.world));
+		this.engine.addSystem(new EnemySystem(this.world, this));
 		this.engine.addSystem(new MusicSystem(this));
 		this.engine.addSystem(new SoundEffectSystem(this));
 	}
@@ -90,11 +93,22 @@ export default class MainScene extends BaseScene {
 			repeat: -1
 		});
 
+		this.anims.create({
+			key: 'pea',
+			frames: this.anims.generateFrameNames('textures', {
+				prefix: 'pea',
+				frames: [1, 2, 3, 4]
+			}),
+			frameRate: 8,
+			repeat: -1
+		});
+
 		this.initializeMapAndCameras();
 		this.HealthDisplay = new HealthDisplay(this);
 		this.world.addPlayer();
 
 		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
+		this.world.createEntity(Asparatato, { x: 500, y: 250 });
 		this.world.createEntity(CoinShotPickup, { x: 500, y: 200 });
 
 		super.create();
