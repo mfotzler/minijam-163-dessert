@@ -23,7 +23,11 @@ export class SoundEffectSystem implements System {
 	}
 	private getSfx(key: string) {
 		if (!this.sfx[key]) {
-			this.sfx[key] = this.scene.sound.add(key);
+			try {
+				this.sfx[key] = this.scene.sound.add(key);
+			} catch (e) {
+				console.error(e);
+			}
 		}
 		return this.sfx[key];
 	}
