@@ -27,32 +27,31 @@ export default class MainMenu extends BaseScene {
 
 	private addCoins() {
 		this.anims.create({
-			key: 'coin-flip',
+			key: 'sprinkle-spin',
 			frames: this.anims.generateFrameNames('textures', {
-				prefix: 'coin',
-				zeroPad: 2,
-				frames: [1, 2, 3, 4, 3, 2, 1]
+				prefix: 'sprinkle',
+				frames: [0, 1, 2, 3]
 			}),
 			frameRate: 8,
 			repeat: -1
 		});
 
-		let coin1 = this.add.sprite(130, 140, 'textures', 'coin');
-		let coin2 = this.add.sprite(this.renderer.width - 130, 140, 'textures', 'coin');
+		let sprinkle1 = this.add.sprite(200, 90, 'textures', 'sprinkle1');
+		let sprinkle2 = this.add.sprite(this.renderer.width - 200, 90, 'textures', 'sprinkle1');
 
-		coin1.scale = 2;
-		coin2.scale = 2;
+		sprinkle1.scale = 4;
+		sprinkle2.scale = 4;
 
-		coin1.play('coin-flip');
-		coin2.play('coin-flip');
+		sprinkle1.play('sprinkle-spin');
+		sprinkle2.play('sprinkle-spin');
 	}
 
 	private addTitle() {
-		this.add.image(this.game.renderer.width / 2, 150, 'textures', 'title');
+		this.add.image(this.game.renderer.width / 2, 100, 'textures', 'title');
 		this.add
 			.bitmapText(
 				this.game.renderer.width / 2,
-				250,
+				200,
 				'rubik',
 				'a game by tesserex, slowback1, and mafcho'
 			)
@@ -60,13 +59,13 @@ export default class MainMenu extends BaseScene {
 	}
 
 	private addPlayButton() {
-		UIHelpers.addCenteredButton(this, 400, 'Play', () => {
+		UIHelpers.addCenteredButton(this, 300, 'Play', () => {
 			this.fadeToScene(MainScene.key, { fadeInDuration: 300 });
 		});
 	}
 
 	private addTutorialButton() {
-		UIHelpers.addCenteredButton(this, 600, 'Tutorial', () => {
+		UIHelpers.addCenteredButton(this, 400, 'Tutorial', () => {
 			this.scene.start(TutorialScene.key);
 		});
 	}
