@@ -21,12 +21,12 @@ export class MovementSystem implements System {
 		this.world.entities.forEach(({ id, movement, collision, render, facing }) => {
 			if (render) {
 				const sprite = render.sprite;
-				if (sprite) {
+				if (sprite?.body) {
 					if (movement?.hasGravity) {
 						sprite.body.velocity.y = this.calculateDownwardVelocity(sprite.body.velocity.y, delta);
 					}
 
-					if (collision) {
+					if (collision && sprite) {
 						collision.blocked = { ...sprite.body.blocked };
 					}
 
@@ -39,9 +39,7 @@ export class MovementSystem implements System {
 					}
 
 					// delete the entity if it's way off screen
-					if (
-						!this.scene.cameras.main.worldView.contains(sprite.x, sprite.y)
-					) {
+					if (!this.scene.cameras.main.worldView.contains(sprite.x, sprite.y)) {
 						MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
 					}
 				}
