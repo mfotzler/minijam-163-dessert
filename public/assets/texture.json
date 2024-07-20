@@ -48,288 +48,48 @@
         "y": 0.5
       }
     },
-    "lil-blower-san01": {
+    "maincharacter1": {
       "frame": {
         "x": 1570,
         "y": 2,
-        "w": 158,
-        "h": 64
+        "w": 168,
+        "h": 219
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 158,
-        "h": 64
+        "w": 168,
+        "h": 219
       },
       "sourceSize": {
-        "w": 158,
-        "h": 64
+        "w": 168,
+        "h": 219
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "lil-blower-san02": {
+    "maincharacter2": {
       "frame": {
-        "x": 1732,
+        "x": 1742,
         "y": 2,
-        "w": 158,
-        "h": 64
+        "w": 168,
+        "h": 219
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 158,
-        "h": 64
+        "w": 168,
+        "h": 219
       },
       "sourceSize": {
-        "w": 158,
-        "h": 64
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "menu-button": {
-      "frame": {
-        "x": 1894,
-        "y": 2,
-        "w": 146,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 146,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 146,
-        "h": 48
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l01": {
-      "frame": {
-        "x": 1894,
-        "y": 54,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l02": {
-      "frame": {
-        "x": 1570,
-        "y": 70,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l03": {
-      "frame": {
-        "x": 1719,
-        "y": 70,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "candycane": {
-      "frame": {
-        "x": 1868,
-        "y": 70,
-        "w": 21,
-        "h": 52
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 21,
-        "h": 52
-      },
-      "sourceSize": {
-        "w": 21,
-        "h": 52
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l04": {
-      "frame": {
-        "x": 1868,
-        "y": 214,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l05": {
-      "frame": {
-        "x": 1570,
-        "y": 230,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l06": {
-      "frame": {
-        "x": 1719,
-        "y": 230,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l07": {
-      "frame": {
-        "x": 1868,
-        "y": 374,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "coin-ball-l08": {
-      "frame": {
-        "x": 2,
-        "y": 129,
-        "w": 145,
-        "h": 156
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 145,
-        "h": 156
-      },
-      "sourceSize": {
-        "w": 145,
-        "h": 156
+        "w": 168,
+        "h": 219
       },
       "pivot": {
         "x": 0.5,
@@ -338,8 +98,8 @@
     },
     "coin-ball-m01": {
       "frame": {
-        "x": 151,
-        "y": 129,
+        "x": 1914,
+        "y": 2,
         "w": 100,
         "h": 107
       },
@@ -360,10 +120,34 @@
         "y": 0.5
       }
     },
+    "candycane": {
+      "frame": {
+        "x": 2018,
+        "y": 2,
+        "w": 21,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 21,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 21,
+        "h": 52
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "coin-ball-m02": {
       "frame": {
-        "x": 255,
-        "y": 129,
+        "x": 1914,
+        "y": 113,
         "w": 100,
         "h": 107
       },
@@ -386,8 +170,8 @@
     },
     "coin-ball-m03": {
       "frame": {
-        "x": 359,
-        "y": 129,
+        "x": 1914,
+        "y": 224,
         "w": 100,
         "h": 107
       },
@@ -408,10 +192,58 @@
         "y": 0.5
       }
     },
+    "maincharacter3": {
+      "frame": {
+        "x": 1570,
+        "y": 225,
+        "w": 168,
+        "h": 219
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 168,
+        "h": 219
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 219
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "maincharacter4": {
+      "frame": {
+        "x": 1742,
+        "y": 225,
+        "w": 168,
+        "h": 219
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 168,
+        "h": 219
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 219
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "coin-ball-m04": {
       "frame": {
-        "x": 463,
-        "y": 129,
+        "x": 1914,
+        "y": 335,
         "w": 100,
         "h": 107
       },
@@ -434,8 +266,8 @@
     },
     "coin-ball-m05": {
       "frame": {
-        "x": 567,
-        "y": 129,
+        "x": 1914,
+        "y": 446,
         "w": 100,
         "h": 107
       },
@@ -456,72 +288,264 @@
         "y": 0.5
       }
     },
-    "coin-ball-m06": {
+    "lil-blower-san01": {
       "frame": {
-        "x": 671,
+        "x": 2,
         "y": 129,
-        "w": 100,
-        "h": 107
+        "w": 158,
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 100,
-        "h": 107
+        "w": 158,
+        "h": 64
       },
       "sourceSize": {
-        "w": 100,
-        "h": 107
+        "w": 158,
+        "h": 64
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "coin-ball-m07": {
+    "lil-blower-san02": {
       "frame": {
-        "x": 775,
+        "x": 164,
         "y": 129,
-        "w": 100,
-        "h": 107
+        "w": 158,
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 100,
-        "h": 107
+        "w": 158,
+        "h": 64
       },
       "sourceSize": {
-        "w": 100,
-        "h": 107
+        "w": 158,
+        "h": 64
       },
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "coin-ball-m08": {
+    "menu-button": {
       "frame": {
-        "x": 879,
+        "x": 326,
         "y": 129,
-        "w": 100,
-        "h": 107
+        "w": 146,
+        "h": 48
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 100,
-        "h": 107
+        "w": 146,
+        "h": 48
       },
       "sourceSize": {
-        "w": 100,
-        "h": 107
+        "w": 146,
+        "h": 48
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l01": {
+      "frame": {
+        "x": 476,
+        "y": 129,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l02": {
+      "frame": {
+        "x": 326,
+        "y": 181,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l03": {
+      "frame": {
+        "x": 2,
+        "y": 197,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l04": {
+      "frame": {
+        "x": 151,
+        "y": 197,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l05": {
+      "frame": {
+        "x": 625,
+        "y": 129,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l06": {
+      "frame": {
+        "x": 774,
+        "y": 129,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l07": {
+      "frame": {
+        "x": 923,
+        "y": 129,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-l08": {
+      "frame": {
+        "x": 1072,
+        "y": 129,
+        "w": 145,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 145,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 145,
+        "h": 156
       },
       "pivot": {
         "x": 0.5,
@@ -530,7 +554,7 @@
     },
     "coin-ball-s01": {
       "frame": {
-        "x": 983,
+        "x": 1221,
         "y": 129,
         "w": 50,
         "h": 53
@@ -554,8 +578,8 @@
     },
     "coin-ball-s02": {
       "frame": {
-        "x": 1037,
-        "y": 129,
+        "x": 1221,
+        "y": 186,
         "w": 50,
         "h": 53
       },
@@ -578,8 +602,8 @@
     },
     "coin-ball-s03": {
       "frame": {
-        "x": 1091,
-        "y": 129,
+        "x": 1221,
+        "y": 243,
         "w": 50,
         "h": 53
       },
@@ -600,10 +624,58 @@
         "y": 0.5
       }
     },
+    "coin-ball-m06": {
+      "frame": {
+        "x": 475,
+        "y": 289,
+        "w": 100,
+        "h": 107
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 107
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 107
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "coin-ball-m07": {
+      "frame": {
+        "x": 300,
+        "y": 341,
+        "w": 100,
+        "h": 107
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 107
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 107
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "coin-ball-s04": {
       "frame": {
-        "x": 1145,
-        "y": 129,
+        "x": 404,
+        "y": 341,
         "w": 50,
         "h": 53
       },
@@ -626,8 +698,8 @@
     },
     "coin-ball-s05": {
       "frame": {
-        "x": 1199,
-        "y": 129,
+        "x": 404,
+        "y": 398,
         "w": 50,
         "h": 53
       },
@@ -648,10 +720,34 @@
         "y": 0.5
       }
     },
+    "coin-ball-m08": {
+      "frame": {
+        "x": 2,
+        "y": 357,
+        "w": 100,
+        "h": 107
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 107
+      },
+      "sourceSize": {
+        "w": 100,
+        "h": 107
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
     "coin-ball-s06": {
       "frame": {
-        "x": 983,
-        "y": 186,
+        "x": 106,
+        "y": 357,
         "w": 50,
         "h": 53
       },
@@ -674,8 +770,8 @@
     },
     "coin-ball-s07": {
       "frame": {
-        "x": 1037,
-        "y": 186,
+        "x": 160,
+        "y": 357,
         "w": 50,
         "h": 53
       },
@@ -698,8 +794,8 @@
     },
     "coin-ball-s08": {
       "frame": {
-        "x": 1091,
-        "y": 186,
+        "x": 214,
+        "y": 357,
         "w": 50,
         "h": 53
       },
@@ -722,8 +818,8 @@
     },
     "coin": {
       "frame": {
-        "x": 1145,
-        "y": 186,
+        "x": 106,
+        "y": 414,
         "w": 50,
         "h": 50
       },
@@ -746,8 +842,8 @@
     },
     "coin02": {
       "frame": {
-        "x": 1199,
-        "y": 186,
+        "x": 160,
+        "y": 414,
         "w": 50,
         "h": 50
       },
@@ -770,8 +866,8 @@
     },
     "coin03": {
       "frame": {
-        "x": 1145,
-        "y": 240,
+        "x": 214,
+        "y": 414,
         "w": 50,
         "h": 50
       },
@@ -794,8 +890,8 @@
     },
     "coin04": {
       "frame": {
-        "x": 1199,
-        "y": 240,
+        "x": 268,
+        "y": 452,
         "w": 50,
         "h": 50
       },
@@ -818,8 +914,8 @@
     },
     "asparagus-potato-head": {
       "frame": {
-        "x": 151,
-        "y": 240,
+        "x": 322,
+        "y": 452,
         "w": 48,
         "h": 104
       },
@@ -843,7 +939,7 @@
     "sprinkle": {
       "frame": {
         "x": 2,
-        "y": 289,
+        "y": 468,
         "w": 48,
         "h": 22
       },
@@ -867,7 +963,7 @@
     "cupcake": {
       "frame": {
         "x": 54,
-        "y": 289,
+        "y": 468,
         "w": 42,
         "h": 60
       },
@@ -890,8 +986,8 @@
     },
     "vacuum01": {
       "frame": {
-        "x": 100,
-        "y": 289,
+        "x": 2,
+        "y": 494,
         "w": 36,
         "h": 180
       },
@@ -914,8 +1010,8 @@
     },
     "vacuum02": {
       "frame": {
-        "x": 2,
-        "y": 315,
+        "x": 100,
+        "y": 468,
         "w": 36,
         "h": 180
       },
@@ -939,7 +1035,7 @@
     "frosting": {
       "frame": {
         "x": 42,
-        "y": 386,
+        "y": 532,
         "w": 32,
         "h": 32
       },
@@ -962,8 +1058,8 @@
     },
     "coin01": {
       "frame": {
-        "x": 1145,
-        "y": 186,
+        "x": 106,
+        "y": 414,
         "w": 50,
         "h": 50
       },
@@ -983,6 +1079,30 @@
         "x": 0.5,
         "y": 0.5
       }
+    },
+    "maincharacter5": {
+      "frame": {
+        "x": 1570,
+        "y": 225,
+        "w": 168,
+        "h": 219
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 168,
+        "h": 219
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 219
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
     }
   },
   "meta": {
@@ -991,8 +1111,8 @@
     "image": "texture.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2042,
-      "h": 532
+      "w": 2041,
+      "h": 676
     },
     "scale": 1
   }
