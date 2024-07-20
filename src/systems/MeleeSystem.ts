@@ -20,9 +20,9 @@ export class MeleeSystem implements System {
 			playerData.shotCooldown = weapon.projectile.cooldown;
 
 			const currentlyAlive = world.entityProvider.entities.filter(
-				(e) => e.projectile?.type === playerData.currentWeapon
+				(e) => e.projectile?.type === Weapons['rolling-pin'].projectile.type
 			).length;
-			if (currentlyAlive >= 5) {
+			if (currentlyAlive >= 1) {
 				return;
 			}
 
