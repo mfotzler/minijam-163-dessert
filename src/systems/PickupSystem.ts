@@ -1,21 +1,36 @@
-import { System, EventType } from "../engine/types";
-import MessageBus from "../messageBus/MessageBus";
-import { World } from "../world";
+import { System, EventType } from '../engine/types';
+import MessageBus from '../messageBus/MessageBus';
+import BaseScene from '../scenes/BaseScene';
+import { World } from '../world';
 
 export class PickupSystem implements System {
-    constructor(world: World) {
-        MessageBus.subscribe(EventType.PLAYER_COLLISION, ({ id }) => {
-            const playerEntity = world.entityProvider.getEntity(world.playerId);
-            const pickupEntity = world.entityProvider.getEntity(id);
-            if (!playerEntity?.player || !pickupEntity?.weaponPickup) return;
+	private sfx: Record<string, Phaser.Sound.BaseSound> = {};
 
-            playerEntity.player.currentWeapon = pickupEntity.weaponPickup.weaponType;
+	constructor(
+		private scene: BaseScene,
+		world: World
+	) {
+		MessageBus.subscribe(EventType.PLAYER_COLLISION, ({ id }) => {
+			const playerEntity = world.entityProvider.getEntity(world.playerId);
+			const pickupEntity = world.entityProvider.getEntity(id);
+			if (!playerEntity?.player || !pickupEntity?.weaponPickup) return;
 
-            // play ridiculous sound effects here
+			const { weaponType } = pickupEntity.weaponPickup;
+			playerEntity.player.currentWeapon = weaponType;
 
-            MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
-        });
-    }
+			this.getSfx('weapon-pickup')?.play();
+			this.getSfx(`get-${weaponType}`)?.play({ delay: 0.25 });
 
-    step() {}
+			MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
+		});
+	}
+
+	step() {}
+
+	private getSfx(key: string) {
+		if (!this.sfx[key]) {
+			this.sfx[key] = this.scene.sound.add(key);
+		}
+		return this.sfx[key];
+	}
 }

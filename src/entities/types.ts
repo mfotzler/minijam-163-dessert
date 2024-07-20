@@ -59,7 +59,7 @@ export interface ProjectileComponent {
 	// used to check max number allowed alive
 	type: WeaponType;
 	// shot speed
-	speed: number;
+	speed?: number;
 	// how many ticks between shots
 	cooldown: number;
 	// how many ticks until it dies

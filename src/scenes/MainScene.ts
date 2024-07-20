@@ -38,7 +38,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new PlayerHealthSystem());
 		this.engine.addSystem(new WeaponSystem(this.world));
-		this.engine.addSystem(new PickupSystem(this.world));
+		this.engine.addSystem(new PickupSystem(this, this.world));
 		this.engine.addSystem(new MeleeSystem(this.world));
 	}
 
@@ -48,6 +48,8 @@ export default class MainScene extends BaseScene {
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
 		this.load.image('background', 'assets/background.png');
+		this.load.audio('weapon-pickup', 'assets/audio/weapon-pickup.wav');
+		this.load.audio('get-sprinkle', 'assets/audio/sprinkle.m4a');
 
 		this.debugGraphics = this.add.graphics();
 	}
