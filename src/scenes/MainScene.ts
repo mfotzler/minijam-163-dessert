@@ -12,11 +12,13 @@ import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
 import { WeaponSystem } from '../systems/WeaponSystem';
 import HealthDisplay from '../entities/HealthDisplay';
-import { SprinkeShotPickup } from '../entities/Pickups';
+import { CoinShotPickup, SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
 import { MusicSystem } from '../systems/MusicSystem';
 import { SoundEffectSystem } from '../systems/SoundEffectSystem';
+import { clone, cloneDeep } from 'lodash';
+import { CoinShot } from '../entities/Weapons';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -77,11 +79,23 @@ export default class MainScene extends BaseScene {
 			repeat: -1
 		});
 
+		this.anims.create({
+			key: 'coin-spin',
+			frames: this.anims.generateFrameNames('textures', {
+				prefix: 'coin',
+				zeroPad: 2,
+				frames: [0, 1, 2, 3]
+			}),
+			frameRate: 8,
+			repeat: -1
+		});
+
 		this.initializeMapAndCameras();
 		this.HealthDisplay = new HealthDisplay(this);
 		this.world.addPlayer();
 
 		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
+		this.world.createEntity(CoinShotPickup, { x: 500, y: 200 });
 
 		super.create();
 	}

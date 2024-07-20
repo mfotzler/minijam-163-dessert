@@ -21,15 +21,14 @@ export default class MainMenu extends BaseScene {
 		super.preload();
 	}
 
-	update(time: number, delta: number): void {
-	}
+	update(time: number, delta: number): void {}
 
 	private addCoins() {
 		this.anims.create({
 			key: 'sprinkle-spin',
 			frames: this.anims.generateFrameNames('textures', {
 				prefix: 'sprinkle',
-				frames: [0, 1, 2, 3]
+				frames: [1, 2, 3, 4]
 			}),
 			frameRate: 8,
 			repeat: -1
