@@ -1,5 +1,5 @@
 import { EventType, StepData, System } from '../engine/types';
-import { DessertComponents, RenderComponent } from '../entities/types';
+import { DessertComponents, Direction, RenderComponent } from '../entities/types';
 import { EntityCollection } from '../engine/world';
 import BaseScene from '../scenes/BaseScene';
 import { EntityDefinition } from '../engine/entities/types';
@@ -64,7 +64,7 @@ export default class RenderSystem implements System {
 
 	step({}: StepData) {
 		this.entityProvider.entities.forEach((entity) => {
-			const { render, position } = entity;
+			const { render, position, facing } = entity;
 
 			if (render && position) {
 				this.ensureEntityHasSprite(entity.id, render);
@@ -72,6 +72,10 @@ export default class RenderSystem implements System {
 					this.sprites[entity.id].anims.play(render.currentAnimation, true);
 				} else {
 					this.sprites[entity.id].anims.stop();
+				}
+
+				if (facing) {
+					this.sprites[entity.id].setFlipX(facing.direction === Direction.LEFT);
 				}
 			}
 		});

@@ -31,10 +31,13 @@ export default class InputSystem implements System {
 				const body = entity.render.sprite.body;
 				if (this.rightKey.isDown) {
 					body.velocity.x = PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
+					entity.render.currentAnimation = 'player-walk';
 				} else if (this.leftKey.isDown) {
 					body.velocity.x = -PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
+					entity.render.currentAnimation = 'player-walk';
 				} else {
 					body.velocity.x = 0;
+					entity.render.currentAnimation = undefined;
 				}
 				if (Phaser.Input.Keyboard.JustDown(this.incrementHealthKey))
 					MessageBus.sendMessage(EventType.PLAYER_HEAL, { heal: 1 });

@@ -58,6 +58,16 @@ export default class MainScene extends BaseScene {
 
 	create(): void {
 		this.anims.create({
+			key: 'player-walk',
+			frames: this.anims.generateFrameNames('textures', {
+				prefix: 'maincharacter',
+				frames: [2, 3, 4, 5]
+			}),
+			frameRate: 10,
+			repeat: -1
+		});
+
+		this.anims.create({
 			key: 'sprinkle-spin',
 			frames: this.anims.generateFrameNames('textures', {
 				prefix: 'sprinkle',
