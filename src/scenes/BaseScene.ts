@@ -2,6 +2,7 @@ import * as Phaser from 'phaser';
 import MessageBus from '../messageBus/MessageBus';
 import { GameEngine } from '../engine/gameEngine';
 import { musicTracks, soundEffectTracks, voiceClipTracks } from '../utils/soundTracks';
+import { EventType } from '../engine/types';
 
 interface StartCallbackConfig {
 	fadeInDuration?: number;
@@ -46,6 +47,8 @@ export default class BaseScene extends Phaser.Scene {
 	protected startMusic() {}
 
 	fadeToScene(key: string, args?: Record<string, unknown>) {
+		MessageBus.sendMessage(EventType.MUSIC_STOP, {});
+
 		if (this.isFading) return;
 		this.cameras.main.fadeOut(300);
 		this.isFading = true;

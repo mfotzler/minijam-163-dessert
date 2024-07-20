@@ -19,8 +19,6 @@ import { Asparatato } from '../entities/Enemies';
 import { EnemySystem } from '../systems/EnemySystem';
 import { MusicSystem } from '../systems/MusicSystem';
 import { SoundEffectSystem } from '../systems/SoundEffectSystem';
-import { clone, cloneDeep } from 'lodash';
-import { CoinShot } from '../entities/Weapons';
 import { GrandmaSystem } from '../systems/GrandmaSystem';
 import { GameStateSystem } from '../systems/GameStateSystem';
 

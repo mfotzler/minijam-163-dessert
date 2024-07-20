@@ -12,6 +12,9 @@ export class MusicSystem implements System {
 		MessageBus.subscribe(EventType.MUSIC_PLAY, this.playMusic.bind(this), {
 			shouldInitializeWithLastMessage: false
 		});
+		MessageBus.subscribe(EventType.MUSIC_STOP, this.stopMusic.bind(this), {
+			shouldInitializeWithLastMessage: false
+		});
 	}
 
 	private initializeTrackList() {
@@ -20,6 +23,11 @@ export class MusicSystem implements System {
 		}
 	}
 
+	private stopMusic() {
+		if (this.currentTrack) {
+			this.trackList[this.currentTrack].stop();
+		}
+	}
 	private playMusic(fileName: string) {
 		this.currentTrack = fileName;
 

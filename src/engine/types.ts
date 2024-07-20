@@ -37,6 +37,7 @@ export enum EventType {
 	ENTITY_ADDED = 'entityAdded',
 
 	MUSIC_PLAY = 'musicPlay',
+	MUSIC_STOP = 'musicStop',
 	SOUND_EFFECT_PLAY = 'soundEffectPlay',
 
 	// Player events

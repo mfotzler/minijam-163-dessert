@@ -25,7 +25,8 @@ export default class DialogueBox extends Container {
 		scene: Phaser.Scene,
 		x: number,
 		y: number,
-		private messages: DialogueMessage[]
+		private messages: DialogueMessage[],
+		private lastMessageCallback?: () => void
 	) {
 		super(scene, x, y);
 
@@ -52,7 +53,12 @@ export default class DialogueBox extends Container {
 		this.text.setOrigin(0, 0);
 		this.add(this.text);
 
-		this.mouseClickIndicator = scene.add.image( scene.renderer.width - 40, DialogueBox.height - 40, 'textures', 'mouse');
+		this.mouseClickIndicator = scene.add.image(
+			scene.renderer.width - 40,
+			DialogueBox.height - 40,
+			'textures',
+			'mouse'
+		);
 		this.add(this.mouseClickIndicator);
 
 		this.clickIndicator = scene.add.bitmapText(
@@ -74,6 +80,7 @@ export default class DialogueBox extends Container {
 			}
 			if (this.currentMessageIndex === messages.length - 1) {
 				MessageBus.sendMessage(Messages.DialogueComplete, {});
+				this.lastMessageCallback && this.lastMessageCallback();
 			}
 		});
 	}
