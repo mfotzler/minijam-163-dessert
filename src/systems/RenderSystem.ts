@@ -15,6 +15,10 @@ export default class RenderSystem implements System {
             if (!this.sprites[id] && render) {
                 const entitySprite = this.createSprite(render);
                 entitySprite.setPosition(position?.x ?? 0, position?.y ?? 0);
+
+                if(render.followWithCamera)
+                    scene.cameras.main.startFollow(entitySprite);
+                
                 if (movement?.initialVelocity) {
                     entitySprite.setVelocity(movement.initialVelocity.x, movement.initialVelocity.y);
                 }
