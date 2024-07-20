@@ -16,6 +16,7 @@ export interface DessertComponents {
 	projectile?: ProjectileComponent;
 	weaponPickup?: WeaponPickupComponent;
 	enemy?: EnemyComponent;
+	collisionType?: CollisionTypeComponent;
 }
 
 export interface RenderComponent {
@@ -86,4 +87,8 @@ export interface EnemyComponent {
 	aiState?: string;
 	// for tracking how long the enemy has been in the current state
 	stateTime?: number;
+}
+
+export interface CollisionTypeComponent {
+	type: string;
 }

@@ -2,6 +2,7 @@ import { EventType, StepData, System } from '../engine/types';
 import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
 import MessageBus from '../messageBus/MessageBus';
+import * as Phaser from 'phaser';
 
 export class CollisionSystem implements System {
 	constructor(
@@ -34,7 +35,18 @@ export class CollisionSystem implements System {
 				const dy = entity.render.sprite.y - player.render.sprite.y;
 				const distance = Math.sqrt(dx * dx + dy * dy);
 
-				if (distance < 32) {
+				const playerSprite = player.render.sprite;
+				const playerBoundingBox = playerSprite.getBounds();
+				const entitySprite = entity.render.sprite;
+				const entityBoundingBox = entitySprite.getBounds();
+
+				// if the player is touching the entity, send a message
+				const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
+					playerBoundingBox,
+					entityBoundingBox
+				);
+
+				if (isOverlapping) {
 					MessageBus.sendMessage(EventType.PLAYER_COLLISION, { id: entity.id });
 				}
 			}

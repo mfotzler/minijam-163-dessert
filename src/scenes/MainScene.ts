@@ -12,7 +12,7 @@ import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
 import { WeaponSystem } from '../systems/WeaponSystem';
 import HealthDisplay from '../entities/HealthDisplay';
-import { CoinShotPickup, SprinkeShotPickup } from '../entities/Pickups';
+import { CoinShotPickup, Grandma, SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
 import { Asparatato } from '../entities/Enemies';
@@ -21,6 +21,8 @@ import { MusicSystem } from '../systems/MusicSystem';
 import { SoundEffectSystem } from '../systems/SoundEffectSystem';
 import { clone, cloneDeep } from 'lodash';
 import { CoinShot } from '../entities/Weapons';
+import { GrandmaSystem } from '../systems/GrandmaSystem';
+import { GameStateSystem } from '../systems/GameStateSystem';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -49,6 +51,8 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new EnemySystem(this.world, this));
 		this.engine.addSystem(new MusicSystem(this));
 		this.engine.addSystem(new SoundEffectSystem(this));
+		this.engine.addSystem(new GrandmaSystem());
+		this.engine.addSystem(new GameStateSystem(this));
 	}
 
 	preload() {
@@ -110,6 +114,7 @@ export default class MainScene extends BaseScene {
 		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
 		this.world.createEntity(Asparatato, { x: 500, y: 250 });
 		this.world.createEntity(CoinShotPickup, { x: 500, y: 200 });
+		this.world.createEntity(Grandma, { x: 800, y: 380 });
 
 		super.create();
 	}

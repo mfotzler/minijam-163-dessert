@@ -47,5 +47,8 @@ export enum EventType {
 	PLAYER_SHOOT = 'playerShoot',
 	PLAYER_SWITCH_WEAPON = 'playerSwitchWeapon',
 	PLAYER_COLLISION = 'playerCollision',
-	PLAYER_MELEE = 'playerMelee'
+	PLAYER_MELEE = 'playerMelee',
+
+	// Game State Events
+	SAVE_GRANDMA = 'saveGrandma'
 }

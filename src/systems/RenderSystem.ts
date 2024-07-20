@@ -40,7 +40,7 @@ export default class RenderSystem implements System {
 
 					this.sprites[id] = entitySprite;
 
-					MessageBus.sendMessage(EventType.ENTITY_ADDED, { id, entitySprite });
+					MessageBus.sendMessage(EventType.ENTITY_ADDED, { id, entitySprite, entity });
 
 					if (projectile?.lifetime) {
 						scene.time.delayedCall(projectile.lifetime, () => {
