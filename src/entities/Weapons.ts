@@ -6,3 +6,9 @@ export const FrostingShot: DessertComponents = {
     render: { spriteKey: 'coin' },
     projectile: { type: 'frosting', speed: 1000, cooldown: 20 }
 };
+
+export const Weapons = {
+    frosting: FrostingShot
+};
+
+export type WeaponType = keyof typeof Weapons;

@@ -1,9 +1,12 @@
+import { WeaponType } from "./Weapons";
+
 export enum Direction {
     LEFT = 0,
     RIGHT = 1
 }
 
 export interface DessertComponents {
+    player?: PlayerComponent;
     position?: PositionComponent;
     movement?: MovementComponent;
     render?: RenderComponent;
@@ -45,7 +48,7 @@ export interface CollisionComponent {
 
 export interface ProjectileComponent {
     // used to check max number allowed alive
-    type: string;
+    type: WeaponType;
     // shot speed
     speed: number;
     // how many ticks between shots
@@ -54,3 +57,8 @@ export interface ProjectileComponent {
 
 // just exists to say input controls it
 export interface InputComponent {}
+
+export interface PlayerComponent {
+    currentWeapon: WeaponType;
+    shotCooldown: number;
+}

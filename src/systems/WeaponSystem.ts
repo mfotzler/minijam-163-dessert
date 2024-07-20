@@ -1,29 +1,30 @@
-import { System, StepData, EventType } from "../engine/types";
-import { FrostingShot } from "../entities/FrostingShot";
-import { Direction } from "../entities/types";
+import { System, EventType } from "../engine/types";
+import { FrostingShot, Weapons } from "../entities/Weapons";
 import MessageBus from "../messageBus/MessageBus";
 import { World } from "../world";
 
 export class WeaponSystem implements System {
-    private nextShotTicks = 0;
-
-    constructor(world: World) {
+    constructor(private world: World) {
         MessageBus.subscribe(EventType.PLAYER_SHOOT, ({ mousePos }) => {
-            if (this.nextShotTicks > 0) {
+            const playerEntity = world.entityProvider.getEntity(world.playerId);
+            const { player: playerData, render } = playerEntity;
+
+            if (playerData.shotCooldown > 0) {
                 return;
             }
 
-            this.nextShotTicks = FrostingShot.projectile.cooldown;
-            const player = world.entityProvider.getEntity(world.playerId);
+            const weapon = Weapons[playerData.currentWeapon];
 
-            const currentlyAlive = world.entityProvider.entities.filter(e => e.projectile?.type === 'frosting').length;
+            playerData.shotCooldown = FrostingShot.projectile.cooldown;
+
+            const currentlyAlive = world.entityProvider.entities.filter(e => e.projectile?.type === playerData.currentWeapon).length;
             if (currentlyAlive >= 5) {
                 return;
             }
 
             const velocityDirection = {
-                x: mousePos.x - (player.render?.sprite?.x ?? 0),
-                y: mousePos.y - (player.render?.sprite?.y ?? 0),
+                x: mousePos.x - (render?.sprite?.x ?? 0),
+                y: mousePos.y - (render?.sprite?.y ?? 0),
             };
             const magnitude = Math.sqrt(velocityDirection.x ** 2 + velocityDirection.y ** 2);
             const initialVelocity = {
@@ -32,19 +33,18 @@ export class WeaponSystem implements System {
             };
 
             world.createEntity({
-                    ...FrostingShot,
+                    ...weapon,
                     movement: {
-                        ...FrostingShot.movement,
+                        ...weapon.movement,
                         initialVelocity,
                     }
                 },
-                { x: player.render?.sprite?.x ?? 0, y: player.render?.sprite?.y ?? 0 });
+                { x: render?.sprite?.x ?? 0, y: render?.sprite?.y ?? 0 });
         })
     }
 
     step() {
-        if (this.nextShotTicks > 0) {
-            this.nextShotTicks--;
-        }
+        const playerEntity = this.world.entityProvider.getEntity(this.world.playerId);
+        playerEntity.player.shotCooldown = Math.max(0, playerEntity.player.shotCooldown - 1);
     }
 };
