@@ -10,8 +10,15 @@ export const FrostingShot: DessertComponents = {
 export const SprinkleShot: DessertComponents = {
 	movement: { killOnCollision: true, hasGravity: false },
 	collision: { tiles: false },
-	render: { scale: 2, currentAnimation: 'sprinkle-spin' },
+	render: { scale: 2, currentAnimation: 'sprinkle-spin', spriteKey: 'sprinkle1' },
 	projectile: { type: 'sprinkle', speed: 1000, cooldown: 15 }
+};
+
+export const CoinShot: DessertComponents = {
+	movement: { killOnCollision: true, hasGravity: false },
+	collision: { tiles: false },
+	render: { scale: 2, currentAnimation: 'coin-spin', spriteKey: 'coin01' },
+	projectile: { type: 'coin', speed: 1000, cooldown: 15 }
 };
 
 export const RollingPin: DessertComponents = {
@@ -29,7 +36,8 @@ export const RollingPin: DessertComponents = {
 export const Weapons = {
 	frosting: FrostingShot,
 	sprinkle: SprinkleShot,
-	'rolling-pin': RollingPin
+	'rolling-pin': RollingPin,
+	coin: CoinShot
 };
 
 export type WeaponType = keyof typeof Weapons;
