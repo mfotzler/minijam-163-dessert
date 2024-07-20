@@ -38,7 +38,8 @@ export default class RenderSystem implements System {
     }
 
     private createSprite(render: RenderComponent): Phaser.Physics.Arcade.Sprite {
-        return this.scene.physics.add.sprite(0, 0, 'textures', render.spriteKey);
+        return this.scene.physics.add.sprite(0, 0, render.spriteSheet ?? 'textures', render.spriteKey)
+            .setScale(render.scale ?? 1);
     }
 
     step({ }: StepData) {

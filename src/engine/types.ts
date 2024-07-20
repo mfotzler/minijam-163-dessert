@@ -17,6 +17,8 @@ export interface Engine {
 }
 
 
+
+
 export enum EventType {
 	/**
 	 * Occurs at the beginning of a step, after the step counter has incremented
@@ -42,5 +44,6 @@ export enum EventType {
 	PLAYER_DEAD = 'playerDead',
 	PLAYER_DAMAGE = 'playerDamage',
 	PLAYER_HEAL = 'playerHeal',
-	PLAYER_SHOOT = "playerShoot"
+	PLAYER_SHOOT = "playerShoot",
+	PLAYER_SWITCH_WEAPON = "playerSwitchWeapon"
 }

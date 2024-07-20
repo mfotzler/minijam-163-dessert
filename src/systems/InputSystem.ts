@@ -11,6 +11,7 @@ export default class InputSystem implements System {
 	private jumpKey: Phaser.Input.Keyboard.Key;
 	private incrementHealthKey: Phaser.Input.Keyboard.Key;
 	private decrementHealthKey: Phaser.Input.Keyboard.Key;
+	private weaponSwitchKey: Phaser.Input.Keyboard.Key;
 
 	constructor(
 		private scene: Phaser.Scene,
@@ -21,6 +22,7 @@ export default class InputSystem implements System {
 		this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 		this.incrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 		this.decrementHealthKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+		this.weaponSwitchKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 	}
 
 	step({}: StepData): Promise<void> | void {
@@ -47,6 +49,10 @@ export default class InputSystem implements System {
 				if (this.scene.input.mousePointer.primaryDown) {
 					MessageBus.sendMessage(EventType.PLAYER_SHOOT, { mousePos: this.scene.input.mousePointer.positionToCamera(this.scene.cameras.main) });
 				};
+
+				if (Phaser.Input.Keyboard.JustDown(this.weaponSwitchKey)) {
+					MessageBus.sendMessage(EventType.PLAYER_SWITCH_WEAPON, {});
+				}
 			}
 		});
 	}

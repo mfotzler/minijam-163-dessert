@@ -43,6 +43,16 @@ export default class MainScene extends BaseScene {
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
         this.load.image('background', 'assets/background.png');
+		this.load.spritesheet('sprinkle', 'assets/sprinkle.png', {
+			frameWidth: 12,
+			frameHeight: 12
+		});
+
+		this.anims.create({
+			key: 'sprinkle-spin',
+			frames: this.anims.generateFrameNumbers('sprinkle'),
+			frameRate: 10
+		});
 
 		this.debugGraphics = this.add.graphics();
 	}

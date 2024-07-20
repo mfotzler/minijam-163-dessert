@@ -17,7 +17,8 @@ export interface DessertComponents {
 }
 
 export interface RenderComponent {
-    spriteKey: string;
+    spriteSheet?: string;
+    spriteKey?: string;
     sprite?: Phaser.Physics.Arcade.Sprite;
     followWithCamera?: boolean;
 }
