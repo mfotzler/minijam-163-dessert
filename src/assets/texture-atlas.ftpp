@@ -2,137 +2,325 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "C:\\Users\\mfotz\\projects\\minijam-163-dessert\\public\\assets",
+  "savePath": "D:\\Projects\\minijam-163-dessert\\src\\assets",
   "images": [
     {
       "name": "asparagus-potato-head.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/asparagus-potato-head.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/asparagus-potato-head.png",
+      "folder": ""
+    },
+    {
+      "name": "blower-san.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/blower-san.png",
       "folder": ""
     },
     {
       "name": "candycane.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/candycane.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/candycane.png",
       "folder": ""
     },
     {
       "name": "carrot1.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/carrot1.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/carrot1.png",
       "folder": ""
     },
     {
       "name": "carrot2.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/carrot2.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/carrot2.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l01.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l01.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l02.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l02.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l03.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l03.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l04.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l04.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l05.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l05.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l06.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l06.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l07.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l07.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-l08.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-l08.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m01.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m01.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m02.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m02.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m03.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m03.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m04.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m04.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m05.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m05.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m06.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m06.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m07.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m07.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-m08.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-m08.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s01.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s01.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s02.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s02.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s03.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s03.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s04.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s04.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s05.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s05.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s06.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s06.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s07.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s07.png",
+      "folder": ""
+    },
+    {
+      "name": "coin-ball-s08.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin-ball-s08.png",
+      "folder": ""
+    },
+    {
+      "name": "coin.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin.png",
+      "folder": ""
+    },
+    {
+      "name": "coin01.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin01.png",
+      "folder": ""
+    },
+    {
+      "name": "coin02.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin02.png",
+      "folder": ""
+    },
+    {
+      "name": "coin03.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin03.png",
+      "folder": ""
+    },
+    {
+      "name": "coin04.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/coin04.png",
       "folder": ""
     },
     {
       "name": "cupcake-face.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/cupcake-face.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/cupcake-face.png",
       "folder": ""
     },
     {
       "name": "cupcake.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/cupcake.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/cupcake.png",
       "folder": ""
     },
     {
       "name": "frosting.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/frosting.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/frosting.png",
+      "folder": ""
+    },
+    {
+      "name": "lil-blower-san01.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/lil-blower-san01.png",
+      "folder": ""
+    },
+    {
+      "name": "lil-blower-san02.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/lil-blower-san02.png",
       "folder": ""
     },
     {
       "name": "maincharacter1.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter1.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/maincharacter1.png",
       "folder": ""
     },
     {
       "name": "maincharacter2.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter2.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/maincharacter2.png",
       "folder": ""
     },
     {
       "name": "maincharacter3.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter3.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/maincharacter3.png",
       "folder": ""
     },
     {
       "name": "maincharacter4.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter4.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/maincharacter4.png",
       "folder": ""
     },
     {
       "name": "maincharacter5.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/maincharacter5.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/maincharacter5.png",
+      "folder": ""
+    },
+    {
+      "name": "menu-button.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/menu-button.png",
+      "folder": ""
+    },
+    {
+      "name": "mouse.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/mouse.png",
       "folder": ""
     },
     {
       "name": "pea1.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/pea1.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/pea1.png",
       "folder": ""
     },
     {
       "name": "pea2.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/pea2.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/pea2.png",
       "folder": ""
     },
     {
       "name": "pea3.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/pea3.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/pea3.png",
       "folder": ""
     },
     {
       "name": "pea4.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/pea4.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/pea4.png",
+      "folder": ""
+    },
+    {
+      "name": "rolling-pin.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/rolling-pin.png",
       "folder": ""
     },
     {
       "name": "sprinkle1.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprinkle1.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprinkle1.png",
       "folder": ""
     },
     {
       "name": "sprinkle2.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprinkle2.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprinkle2.png",
       "folder": ""
     },
     {
       "name": "sprinkle3.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprinkle3.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprinkle3.png",
       "folder": ""
     },
     {
       "name": "sprinkle4.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprinkle4.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprinkle4.png",
       "folder": ""
     },
     {
       "name": "sprout1.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprout1.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprout1.png",
       "folder": ""
     },
     {
       "name": "sprout2.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprout2.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprout2.png",
       "folder": ""
     },
     {
       "name": "sprout3.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprout3.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprout3.png",
       "folder": ""
     },
     {
       "name": "sprout4.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/sprout4.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/sprout4.png",
       "folder": ""
     },
     {
       "name": "title.png",
-      "path": "C:/Users/mfotz/projects/minijam-163-dessert/src/assets/title.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/title.png",
+      "folder": ""
+    },
+    {
+      "name": "vacuum01.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/vacuum01.png",
+      "folder": ""
+    },
+    {
+      "name": "vacuum02.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/vacuum02.png",
+      "folder": ""
+    },
+    {
+      "name": "wall.png",
+      "path": "D:/Projects/minijam-163-dessert/src/assets/wall.png",
       "folder": ""
     }
   ],
-  "folders": [
-    "C:/Users/mfotz/projects/minijam-155-wind/src/assets"
-  ],
+  "folders": [],
   "packOptions": {
     "textureName": "texture",
     "textureFormat": "png",
@@ -145,7 +333,7 @@
     "filter": "none",
     "exporter": "Phaser (hash)",
     "fileName": "pack-result",
-    "savePath": "C:\\Users\\mfotz\\projects\\minijam-163-dessert\\public\\assets",
+    "savePath": "D:\\Projects\\minijam-163-dessert\\src\\assets",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,
