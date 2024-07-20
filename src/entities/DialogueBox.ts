@@ -18,6 +18,9 @@ export default class DialogueBox extends Container {
 	private image: Image;
 	private currentMessageIndex = 0;
 
+	static height: number = 200;
+	private mouseClickIndicator: Phaser.GameObjects.Image;
+
 	constructor(
 		scene: Phaser.Scene,
 		x: number,
@@ -32,7 +35,7 @@ export default class DialogueBox extends Container {
 			'textures',
 			'menu-button',
 			scene.renderer.width,
-			420,
+			DialogueBox.height,
 			20,
 			20,
 			20,
@@ -41,13 +44,16 @@ export default class DialogueBox extends Container {
 		background.setOrigin(0, 0);
 		this.add(background);
 
-		this.nameText = scene.add.bitmapText(350, 20, 'rubik', '');
+		this.nameText = scene.add.bitmapText(200, 5, 'rubik', '');
 		this.nameText.setOrigin(0, 0);
 		this.add(this.nameText);
 
-		this.text = scene.add.bitmapText(350, 100, 'rubik', '');
+		this.text = scene.add.bitmapText(200, 70, 'rubik', '');
 		this.text.setOrigin(0, 0);
 		this.add(this.text);
+
+		this.mouseClickIndicator = scene.add.image( scene.renderer.width - 40, DialogueBox.height - 40, 'textures', 'mouse');
+		this.add(this.mouseClickIndicator);
 
 		this.clickIndicator = scene.add.bitmapText(
 			background.width - 420,

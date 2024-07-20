@@ -17,42 +17,41 @@ export default class TutorialScene extends BaseScene {
 		this.playSound();
 		this.addGraphic();
 
-		const dialogueBox = new DialogueBox(this.scene.scene, 0, this.renderer.height - 420, [
+		const dialogueBox = new DialogueBox(this.scene.scene, 0, this.renderer.height - DialogueBox.height, [
 			{
 				text:
-					"Greetings! Allow me to introduce myself as Lil' Blower-san! I'm in dire need of " +
-					'\n your assistance to gather up these coins that have mysteriously started ' +
-					'\n falling from the sky!',
-				name: 'Blower-san',
-				image: 'lil-blower-san01'
+					"Hey, I need your help!",
+				name: 'Mr. Cupcake',
+				image: 'cupcake-face'
 			},
 			{
 				text:
-					'Harness my breezy powers to maneuver the coin ball. Simply direct it towards' +
-					'\n coins to incorporate them into your coin empire!',
-				name: 'Blower-san',
-				image: 'lil-blower-san01'
+					"The Evil Shady Vegetable Empire has" +
+					"\nkidnapped all the grandmas!",
+				name: 'Mr. Cupcake',
+				image: 'cupcake-face'
 			},
 			{
 				text:
-					"You can click the screen to move me! I'll always face the ball of coins.",
-				name: 'Blower-san',
-				image: 'lil-blower-san01'
+					'No one will get to have dessert ' +
+					'\never again at this rate!',
+				name: 'Mr. Cupcake',
+				image: 'cupcake-face'
 			},
 			{
 				text:
-					"Once you've amassed your coin hoard, guide the ball to the designated " +
-					'\n goal hole to secure those valuable points!',
-				name: 'Blower-san',
-				image: 'lil-blower-san01'
+					"You can move me around with " +
+					"\nthe W, A, S, and D keys!",
+				name: 'Mr. Cupcake',
+				image: 'cupcake-face'
 			},
 			{
 				text:
-					"Strive to accumulate as many points as possible, and perhaps I'll unveil a" +
-					'\n delightful surprise. Best of luck!',
-				name: 'Blower-san',
-				image: 'lil-blower-san01'
-			}
+					"Click to shoot! I can bonk them" +
+					"\nwith my rolling pin if you press F.",
+				name: 'Mr. Cupcake',
+				image: 'cupcake-face'
+			},
 		]);
 		this.add.existing<Container>(dialogueBox);
 	}
