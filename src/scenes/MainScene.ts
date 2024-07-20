@@ -61,7 +61,7 @@ export default class MainScene extends BaseScene {
 				prefix: 'sprinkle',
 				frames: [0, 1, 2, 3]
 			}),
-			frameRate: 16,
+			frameRate: 8,
 			repeat: -1
 		});
 
