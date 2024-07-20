@@ -2,14 +2,15 @@
 import { World } from '../world';
 import MessageBus from '../messageBus/MessageBus';
 import { Weapons } from '../entities/Weapons';
+import { Direction } from '../entities/types';
 
 export class MeleeSystem implements System {
 	private static readonly MELEE_COOLDOWN = 30;
 
 	constructor(private world: World) {
-		MessageBus.subscribe(EventType.PLAYER_MELEE, (facing: 'left' | 'right') => {
+		MessageBus.subscribe(EventType.PLAYER_MELEE, () => {
 			const playerEntity = world.entityProvider.getEntity(world.playerId);
-			const { player: playerData, render } = playerEntity;
+			const { player: playerData, render, facing } = playerEntity;
 
 			if (playerData.shotCooldown > 0) {
 				return;
@@ -31,28 +32,30 @@ export class MeleeSystem implements System {
 				y: 0
 			};
 
+			const direction = facing?.direction ?? Direction.RIGHT;
+
 			world.createEntity(
 				{
 					...weapon,
 					movement: {
 						...weapon.movement,
 						initialVelocity,
-						rotation: { velocity: this.getWeaponRotation(facing) }
+						rotation: { velocity: this.getWeaponRotation(direction) }
 					}
 				},
-				{ x: this.getWeaponX(facing, render?.sprite?.x ?? 0), y: render?.sprite?.y + 3 ?? 3 }
+				{ x: this.getWeaponX(direction, render?.sprite?.x ?? 0), y: render?.sprite?.y + 3 ?? 3 }
 			);
 		});
 	}
 
-	private getWeaponRotation(facing: 'left' | 'right') {
-		return facing === 'right' ? 90 : -90;
+	private getWeaponRotation(facing: Direction) {
+		return facing === Direction.RIGHT ? 90 : -90;
 	}
 
-	private getWeaponX(facing: 'left' | 'right', initialX: number): number {
+	private getWeaponX(facing: Direction, initialX: number): number {
 		const offset = 45;
 
-		return facing === 'right' ? initialX + offset : initialX - offset;
+		return facing === Direction.RIGHT ? initialX + offset : initialX - offset;
 	}
 
 	step() {}

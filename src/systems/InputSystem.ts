@@ -25,18 +25,14 @@ export default class InputSystem implements System {
 		this.meleeKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
 	}
 
-	private facing: 'left' | 'right' = 'right';
-
 	step({}: StepData): Promise<void> | void {
 		this.entityProvider.entities.forEach((entity) => {
 			if (entity.render?.sprite && entity.input) {
 				const body = entity.render.sprite.body;
 				if (this.rightKey.isDown) {
 					body.velocity.x = PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
-					this.facing = 'right';
 				} else if (this.leftKey.isDown) {
 					body.velocity.x = -PHYSICS_CONSTANTS.PLAYER_RUN_SPEED;
-					this.facing = 'left';
 				} else {
 					body.velocity.x = 0;
 				}
@@ -52,7 +48,7 @@ export default class InputSystem implements System {
 				}
 
 				if (this.scene.input.keyboard.checkDown(this.meleeKey)) {
-					MessageBus.sendMessage(EventType.PLAYER_MELEE, this.facing);
+					MessageBus.sendMessage(EventType.PLAYER_MELEE, undefined);
 				}
 
 				if (this.scene.input.mousePointer.primaryDown) {
