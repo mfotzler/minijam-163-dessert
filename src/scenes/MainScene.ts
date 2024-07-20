@@ -15,6 +15,7 @@ import HealthDisplay from '../entities/HealthDisplay';
 import { SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
+import { MusicSystem } from '../systems/MusicSystem';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -40,6 +41,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new WeaponSystem(this.world));
 		this.engine.addSystem(new PickupSystem(this, this.world));
 		this.engine.addSystem(new MeleeSystem(this.world));
+		this.engine.addSystem(new MusicSystem(this));
 	}
 
 	preload() {
@@ -70,6 +72,12 @@ export default class MainScene extends BaseScene {
 		this.world.addPlayer();
 
 		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
+
+		super.create();
+	}
+
+	protected startMusic() {
+		MessageBus.sendMessage(EventType.MUSIC_PLAY, 'theme_3');
 	}
 
 	private initializeMapAndCameras(): void {

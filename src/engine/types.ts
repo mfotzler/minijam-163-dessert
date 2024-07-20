@@ -36,6 +36,8 @@ export enum EventType {
 	ENTITY_PREINIT = 'entityPreInit',
 	ENTITY_ADDED = 'entityAdded',
 
+	MUSIC_PLAY = 'musicPlay',
+
 	// Player events
 	PLAYER_HEALTH = 'playerHealth',
 	PLAYER_DEAD = 'playerDead',
