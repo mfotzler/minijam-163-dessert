@@ -57,10 +57,12 @@ export default class MainScene extends BaseScene {
 	create(): void {
 		this.anims.create({
 			key: 'sprinkle-spin',
-			frames: this.anims.generateFrameNumbers('sprinkle', {
+			frames: this.anims.generateFrameNames('textures', {
+				prefix: 'sprinkle',
 				frames: [0, 1, 2, 3]
 			}),
-			frameRate: 16
+			frameRate: 16,
+			repeat: -1
 		});
 
 		this.initializeMapAndCameras();
