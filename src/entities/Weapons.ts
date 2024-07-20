@@ -10,7 +10,7 @@ export const FrostingShot: DessertComponents = {
 export const SprinkleShot: DessertComponents = {
     movement: { killOnCollision: true, hasGravity: false },
     collision: { tiles: false },
-    render: { spriteSheet: 'sprinkle', scale: 4 },
+    render: { spriteSheet: 'sprinkle', scale: 2, currentAnimation: 'sprinkle-spin' },
     projectile: { type: 'sprinkle', speed: 1000, cooldown: 15 }
 };
 

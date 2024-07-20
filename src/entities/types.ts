@@ -14,13 +14,16 @@ export interface DessertComponents {
     collision?: CollisionComponent;
     input?: InputComponent;
     projectile?: ProjectileComponent;
+    weaponPickup?: WeaponPickupComponent;
 }
 
 export interface RenderComponent {
+    scale?: number;
     spriteSheet?: string;
     spriteKey?: string;
     sprite?: Phaser.Physics.Arcade.Sprite;
     followWithCamera?: boolean;
+    currentAnimation?: string;
 }
 
 export interface FacingComponent {
@@ -39,7 +42,10 @@ export interface PositionComponent {
 }
 
 export interface CollisionComponent {
+    // if the object will be blocked by tiles
     tiles?: boolean;
+    // if the object emits an event when hitting the player
+    player?: boolean;
     blocked?: {
         up: boolean;
         down: boolean;
@@ -63,4 +69,8 @@ export interface InputComponent {}
 export interface PlayerComponent {
     currentWeapon: WeaponType;
     shotCooldown: number;
+}
+
+export interface WeaponPickupComponent {
+    weaponType: WeaponType;
 }

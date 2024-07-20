@@ -2,7 +2,6 @@ import {EventType, StepData, System} from "../engine/types";
 import {DessertComponents, RenderComponent} from "../entities/types";
 import {EntityCollection} from "../engine/world";
 import BaseScene from "../scenes/BaseScene";
-import {EventEmitter} from "events";
 import { EntityDefinition } from "../engine/entities/types";
 import MessageBus from "../messageBus/MessageBus";
 
@@ -48,6 +47,11 @@ export default class RenderSystem implements System {
 
             if (render && position) {
                 this.ensureEntityHasSprite(entity.id, render);
+                if (render.currentAnimation) {
+                    this.sprites[entity.id].anims.play(render.currentAnimation, true);
+                } else {
+                    this.sprites[entity.id].anims.stop();
+                }
             }
         });
     }

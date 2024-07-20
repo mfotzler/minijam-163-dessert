@@ -12,6 +12,8 @@ import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
 import { WeaponSystem } from '../systems/WeaponSystem';
 import HealthDisplay from '../entities/HealthDisplay';
+import { SprinkeShotPickup } from '../entities/Pickups';
+import { PickupSystem } from '../systems/PickupSystem';
 
 export default class MainScene extends BaseScene {
 	static readonly key = 'MainScene';
@@ -35,6 +37,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new InputSystem(this, this.world.entityProvider));
 		this.engine.addSystem(new PlayerHealthSystem());
 		this.engine.addSystem(new WeaponSystem(this.world));
+		this.engine.addSystem(new PickupSystem(this.world));
 	}
 
 	preload() {
@@ -42,25 +45,29 @@ export default class MainScene extends BaseScene {
 
 		this.load.tilemapTiledJSON('map1', 'assets/map1.json');
 		this.load.image('tiles', 'assets/wall.png');
-        this.load.image('background', 'assets/background.png');
+		this.load.image('background', 'assets/background.png');
 		this.load.spritesheet('sprinkle', 'assets/sprinkle.png', {
 			frameWidth: 12,
 			frameHeight: 12
-		});
-
-		this.anims.create({
-			key: 'sprinkle-spin',
-			frames: this.anims.generateFrameNumbers('sprinkle'),
-			frameRate: 10
 		});
 
 		this.debugGraphics = this.add.graphics();
 	}
 
 	create(): void {
+		this.anims.create({
+			key: 'sprinkle-spin',
+			frames: this.anims.generateFrameNumbers('sprinkle', {
+				frames: [0, 1, 2, 3]
+			}),
+			frameRate: 16
+		});
+
 		this.initializeMapAndCameras();
 		this.HealthDisplay = new HealthDisplay(this);
 		this.world.addPlayer();
+
+		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
 	}
 
 	private initializeMapAndCameras(): void {

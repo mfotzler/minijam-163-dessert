@@ -16,34 +16,32 @@ export interface Engine {
 	stop: () => Promise<void>;
 }
 
-
-
-
 export enum EventType {
-	/**
-	 * Occurs at the beginning of a step, after the step counter has incremented
-	 * but before any systems have been run.
-	 */
-	STEP_BEGIN = 'stepBegin',
-	/**
-	 * Occurs at the end of a step, after all systems have been run.
-	 */
-	STEP_END = 'stepEnd',
-	/**
-	 * Requests that an entity be added to the world.
-	 * Do not use this to modify the entity as it will be deep cloned first.
-	 */
-	ADD_ENTITY = 'addEntity',
-	DELETE_ENTITY = 'deleteEntity',
-	ENTITY_DELETED = 'entityDeleted',
-	ENTITY_PREINIT = 'entityPreInit',
-	ENTITY_ADDED = 'entityAdded',
+    /**
+     * Occurs at the beginning of a step, after the step counter has incremented
+     * but before any systems have been run.
+     */
+    STEP_BEGIN = 'stepBegin',
+    /**
+     * Occurs at the end of a step, after all systems have been run.
+     */
+    STEP_END = 'stepEnd',
+    /**
+     * Requests that an entity be added to the world.
+     * Do not use this to modify the entity as it will be deep cloned first.
+     */
+    ADD_ENTITY = 'addEntity',
+    DELETE_ENTITY = 'deleteEntity',
+    ENTITY_DELETED = 'entityDeleted',
+    ENTITY_PREINIT = 'entityPreInit',
+    ENTITY_ADDED = 'entityAdded',
 
-	// Player events
-	PLAYER_HEALTH = 'playerHealth',
-	PLAYER_DEAD = 'playerDead',
-	PLAYER_DAMAGE = 'playerDamage',
-	PLAYER_HEAL = 'playerHeal',
-	PLAYER_SHOOT = "playerShoot",
-	PLAYER_SWITCH_WEAPON = "playerSwitchWeapon"
+    // Player events
+    PLAYER_HEALTH = 'playerHealth',
+    PLAYER_DEAD = 'playerDead',
+    PLAYER_DAMAGE = 'playerDamage',
+    PLAYER_HEAL = 'playerHeal',
+    PLAYER_SHOOT = "playerShoot",
+    PLAYER_SWITCH_WEAPON = "playerSwitchWeapon",
+    PLAYER_COLLISION = "playerCollision"
 }
