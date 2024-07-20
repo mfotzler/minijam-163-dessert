@@ -1,4 +1,4 @@
-import { EventType, StepData, System } from '../engine/types';
+import { EventType, System } from '../engine/types';
 import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
 import MessageBus from '../messageBus/MessageBus';
@@ -30,11 +30,6 @@ export class CollisionSystem implements System {
 				const player = this.world.entityProvider.getEntity(this.world.playerId);
 				if (!player?.render?.sprite) return;
 
-				// get distance between player sprite and entity
-				const dx = entity.render.sprite.x - player.render.sprite.x;
-				const dy = entity.render.sprite.y - player.render.sprite.y;
-				const distance = Math.sqrt(dx * dx + dy * dy);
-
 				const playerSprite = player.render.sprite;
 				const playerBoundingBox = playerSprite.getBounds();
 				const entitySprite = entity.render.sprite;
@@ -48,6 +43,9 @@ export class CollisionSystem implements System {
 
 				if (isOverlapping) {
 					MessageBus.sendMessage(EventType.PLAYER_COLLISION, { id: entity.id });
+					if (entity.movement?.killOnCollision) {
+						MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
+					}
 				}
 			}
 		});

@@ -1,7 +1,7 @@
 import { EntityDefinition } from '../engine/entities/types';
-import { System, StepData, EventType } from '../engine/types';
+import { System } from '../engine/types';
 import { Pea } from '../entities/Enemies';
-import { DessertComponents, Direction } from '../entities/types';
+import { DessertComponents } from '../entities/types';
 import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
 
