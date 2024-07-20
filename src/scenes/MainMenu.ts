@@ -12,8 +12,8 @@ export default class MainMenu extends BaseScene {
 
 	create(): void {
 		this.addTitle();
+		this.addIntroButton();
 		this.addPlayButton();
-		this.addTutorialButton();
 		this.addCoins();
 	}
 
@@ -57,15 +57,15 @@ export default class MainMenu extends BaseScene {
 			.setOrigin(0.5, 0.5);
 	}
 
-	private addPlayButton() {
-		UIHelpers.addCenteredButton(this, 300, 'Play', () => {
-			this.fadeToScene(MainScene.key, { fadeInDuration: 300 });
+	private addIntroButton() {
+		UIHelpers.addCenteredButton(this, 300, 'Intro', () => {
+			this.scene.start(TutorialScene.key);
 		});
 	}
 
-	private addTutorialButton() {
-		UIHelpers.addCenteredButton(this, 400, 'Tutorial', () => {
-			this.scene.start(TutorialScene.key);
+	private addPlayButton() {
+		UIHelpers.addCenteredButton(this, 400, 'Play', () => {
+			this.fadeToScene(MainScene.key, { fadeInDuration: 300 });
 		});
 	}
 }
