@@ -49,7 +49,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new EnemySystem(this.world));
 		this.engine.addSystem(new MusicSystem(this));
 		this.engine.addSystem(new SoundEffectSystem(this));
-		this.engine.addSystem(new GrandmaSystem());
+		this.engine.addSystem(new GrandmaSystem(this.world));
 		this.engine.addSystem(new GameStateSystem(this));
 	}
 

@@ -25,7 +25,6 @@ export class CollisionSystem implements System {
 	}
 
 	step() {
-		// pickup collision going here so it doesn't rely on the player sprite existing at setup time
 		this.world.entityProvider.entities.forEach((entity) => {
 			this.checkForPlayerCollision(entity);
 			this.checkForProjectileCollision(entity);
@@ -33,29 +32,29 @@ export class CollisionSystem implements System {
 	}
 
 	private checkForProjectileCollision(entity: DessertComponents & { id: string }) {
-		if (entity?.collision.projectile !== true) return;
+		if (!entity?.projectile) return;
 		const entitySprite = entity.render?.sprite;
 
 		if (!entitySprite) return;
 
-		const projectiles = this.world.entityProvider.entities.filter(
-			(e) => e.collisionType?.type === 'projectile'
+		const targets = this.world.entityProvider.entities.filter((e) =>
+			e.collision?.tags?.includes('projectile')
 		);
 
-		projectiles.forEach((projectile) => {
-			if (!projectile.render?.sprite) return;
-			const projectileSprite = projectile.render.sprite;
-			const projectileBoundingBox = projectileSprite.getBounds();
+		targets.forEach((target) => {
+			if (!target.render?.sprite) return;
+			const targetSprite = target.render.sprite;
+			const targetBox = targetSprite.getBounds();
 			const entityBoundingBox = entitySprite.getBounds();
 
 			const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
-				projectileBoundingBox,
+				targetBox,
 				entityBoundingBox
 			);
 
 			if (isOverlapping) {
-				MessageBus.sendMessage(EventType.PROJECTILE_COLLISION, { id: entity.id });
-				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: projectile.id });
+				MessageBus.sendMessage(EventType.PROJECTILE_COLLISION, { id: target.id });
+				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
 			}
 		});
 	}
