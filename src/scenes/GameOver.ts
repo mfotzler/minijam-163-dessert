@@ -34,7 +34,7 @@ export default class GameOver extends BaseScene {
 		const dialogueBox = new DialogueBox(
 			this,
 			0,
-			this.renderer.height - 420,
+			this.renderer.height / 2 - 100,
 			[
 				{
 					text: 'Too bad! You lost!',
