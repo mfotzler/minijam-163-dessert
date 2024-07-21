@@ -8,6 +8,7 @@ export class GrandmaSystem implements System {
 			const entity = world.entityProvider.getEntity(id);
 			if (entity.collision?.tags?.includes('grandma')) {
 				MessageBus.sendMessage(EventType.SAVE_GRANDMA, {});
+				MessageBus.sendMessage(EventType.MUSIC_PLAY, { track: 'game_win', loops: false });
 
 				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
 			}

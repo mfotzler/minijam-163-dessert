@@ -3,6 +3,11 @@ import MessageBus from '../messageBus/MessageBus';
 import BaseScene from '../scenes/BaseScene';
 import { musicTracks } from '../utils/soundTracks';
 
+export type PlayMusicOptions = {
+	track: string;
+	loops?: boolean;
+};
+
 export class MusicSystem implements System {
 	private currentTrack: string | null = null;
 	private trackList: Record<string, Phaser.Sound.BaseSound> = {};
@@ -28,7 +33,11 @@ export class MusicSystem implements System {
 			this.trackList[this.currentTrack].stop();
 		}
 	}
-	private playMusic(fileName: string) {
+	private playMusic(fileNameOrOptions: string | PlayMusicOptions) {
+		const normalizedOptions = this.normalizePlayMusicOptions(fileNameOrOptions);
+
+		const fileName = normalizedOptions.track;
+
 		this.currentTrack = fileName;
 
 		for (const track in this.trackList) {
@@ -39,7 +48,18 @@ export class MusicSystem implements System {
 			this.trackList[fileName] = this.scene.sound.add(fileName);
 		}
 
-		this.trackList[fileName].play({ loop: true, volume: 0.5 });
+		this.trackList[fileName].play({ loop: normalizedOptions.loops, volume: 0.5 });
+	}
+
+	private normalizePlayMusicOptions(options: string | PlayMusicOptions): PlayMusicOptions {
+		if (typeof options === 'string') {
+			return { track: options, loops: true };
+		}
+		if (options.loops === undefined) {
+			options.loops = true;
+		}
+
+		return options;
 	}
 
 	step(data: StepData): Promise<void> | void {}
