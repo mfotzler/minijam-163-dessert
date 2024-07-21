@@ -33,7 +33,6 @@ export interface FacingComponent {
 
 export interface MovementComponent {
 	hasGravity?: boolean;
-	killOnCollision?: boolean;
 	initialVelocity?: { x: number; y: number };
 	rotation?: { velocity?: number; startAngle?: number; origin?: { x: number; y: number } };
 }
@@ -55,6 +54,7 @@ export interface CollisionComponent {
 		right: boolean;
 	};
 	tags?: string[];
+	killOnCollision?: boolean;
 }
 
 export interface ProjectileComponent {
@@ -68,6 +68,8 @@ export interface ProjectileComponent {
 	lifetime?: number;
 	// how much damage it deals enemies
 	damage?: number;
+	// how much knockback speed it deals enemies
+	knockback?: number;
 }
 
 // just exists to say input controls it
@@ -90,4 +92,5 @@ export interface EnemyComponent {
 	aiState?: string;
 	// for tracking how long the enemy has been in the current state
 	stateTime?: number;
+	iframes?: number;
 }

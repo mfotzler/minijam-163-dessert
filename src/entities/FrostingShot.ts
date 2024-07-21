@@ -1,8 +1,8 @@
-import { DessertComponents } from "./types";
+import { DessertComponents } from './types';
 
 export const FrostingShot: DessertComponents = {
-    movement: { killOnCollision: true, hasGravity: true },
-    collision: { tiles: false },
-    render: { spriteKey: 'coin' },
-    projectile: { type: 'frosting', speed: 1000, cooldown: 20 }
+	movement: { hasGravity: true },
+	collision: { killOnCollision: true, tiles: false },
+	render: { spriteKey: 'coin' },
+	projectile: { type: 'frosting', speed: 1000, cooldown: 20 }
 };

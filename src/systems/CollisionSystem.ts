@@ -57,7 +57,16 @@ export class CollisionSystem implements System {
 					id: target.id,
 					damage: entity.projectile.damage ?? 1
 				});
-				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
+				if (entity.collision?.killOnCollision) {
+					MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
+				}
+				if (entity.projectile.knockback) {
+					const knockback = entity.projectile.knockback;
+					const dx = targetSprite.x - entitySprite.x;
+					const dy = targetSprite.y - entitySprite.y;
+					const angle = Math.atan2(dy, dx);
+					targetSprite.setVelocity(Math.cos(angle) * knockback, Math.sin(angle) * knockback);
+				}
 			}
 		});
 	}
@@ -80,7 +89,7 @@ export class CollisionSystem implements System {
 
 			if (isOverlapping) {
 				MessageBus.sendMessage(EventType.PLAYER_COLLISION, { id: entity.id });
-				if (entity.movement?.killOnCollision) {
+				if (entity.collision?.killOnCollision) {
 					MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
 				}
 			}

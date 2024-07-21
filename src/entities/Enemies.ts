@@ -2,7 +2,8 @@ import { DessertComponents } from './types';
 
 export const Asparatato: DessertComponents = {
 	position: { x: 0, y: 0 },
-	collision: { player: true, tags: ['projectile'] },
+	movement: { hasGravity: true },
+	collision: { tiles: true, player: true, tags: ['projectile'] },
 	render: { spriteKey: 'asparagus-potato-head', scale: 1 },
 	enemy: {
 		type: 'asparatato',
@@ -12,8 +13,8 @@ export const Asparatato: DessertComponents = {
 };
 
 export const Pea: DessertComponents = {
-	movement: { killOnCollision: true, initialVelocity: { x: 0, y: 200 } },
-	collision: { player: true },
+	movement: { initialVelocity: { x: 0, y: 200 } },
+	collision: { killOnCollision: true, player: true },
 	render: { spriteKey: 'pea1', scale: 1, currentAnimation: 'pea' },
 	enemy: {
 		damage: 1
