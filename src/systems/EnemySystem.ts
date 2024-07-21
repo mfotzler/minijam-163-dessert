@@ -1,19 +1,24 @@
 import { EntityDefinition } from '../engine/entities/types';
-import { System } from '../engine/types';
+import { System, EventType } from '../engine/types';
 import { Pea } from '../entities/Enemies';
 import { DessertComponents } from '../entities/types';
-import BaseScene from '../scenes/BaseScene';
+import MessageBus from '../messageBus/MessageBus';
 import { World } from '../world';
 
 export class EnemySystem implements System {
-	constructor(
-		private world: World,
-		private scene: BaseScene
-	) {}
+	constructor(private world: World) {
+		MessageBus.subscribe(EventType.PLAYER_COLLISION, ({ id }) => {
+			const playerEntity = world.entityProvider.getEntity(world.playerId);
+			const enemyEntity = world.entityProvider.getEntity(id);
+			if (!playerEntity?.player || !enemyEntity?.enemy) return;
+
+			MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: enemyEntity.enemy.damage });
+		});
+	}
 
 	step() {
 		this.world.entityProvider.entities.forEach((entity) => {
-			if (entity.enemy) {
+			if (entity.enemy?.type) {
 				enemyBehaviors[entity.enemy.type](this.world, entity);
 			}
 		});

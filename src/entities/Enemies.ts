@@ -15,5 +15,7 @@ export const Pea: DessertComponents = {
 	movement: { killOnCollision: true, initialVelocity: { x: 0, y: 200 } },
 	collision: { player: true },
 	render: { spriteKey: 'pea1', scale: 1, currentAnimation: 'pea' },
-	projectile: { type: 'pea', speed: 400, cooldown: 30 }
+	enemy: {
+		damage: 1
+	}
 };

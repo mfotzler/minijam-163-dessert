@@ -81,9 +81,9 @@ export interface WeaponPickupComponent {
 }
 
 export interface EnemyComponent {
-	health: number;
-	damage: number;
-	type: string;
+	health?: number;
+	damage?: number;
+	type?: string;
 	aiState?: string;
 	// for tracking how long the enemy has been in the current state
 	stateTime?: number;
