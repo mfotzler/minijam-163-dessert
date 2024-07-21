@@ -59,8 +59,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1543,
-                 "y":271
+                 "x":1488,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -71,8 +71,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1904,
-                 "y":266
+                 "x":1856,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -83,8 +83,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2273,
-                 "y":261
+                 "x":2224,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -95,8 +95,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2636,
-                 "y":261
+                 "x":2592,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -107,8 +107,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1601,
-                 "y":268
+                 "x":1584,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -119,8 +119,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1971,
-                 "y":265
+                 "x":1952,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -131,8 +131,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2342,
-                 "y":260
+                 "x":2304,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -143,8 +143,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2712,
-                 "y":260
+                 "x":2688,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -251,8 +251,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":883,
-                 "y":323
+                 "x":832,
+                 "y":288
                 }, 
                 {
                  "height":0,
@@ -491,8 +491,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1060,
-                 "y":220
+                 "x":1056,
+                 "y":224
                 }, 
                 {
                  "height":0,
@@ -503,8 +503,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1438,
-                 "y":206
+                 "x":1440,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -515,8 +515,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1695,
-                 "y":208
+                 "x":1696,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -527,8 +527,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1810,
-                 "y":203
+                 "x":1808,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -539,8 +539,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2065,
-                 "y":205
+                 "x":2064,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -551,8 +551,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2175,
-                 "y":205
+                 "x":2176,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -563,8 +563,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2428,
-                 "y":205
+                 "x":2432,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -576,7 +576,7 @@
                  "visible":true,
                  "width":0,
                  "x":2544,
-                 "y":206
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -587,8 +587,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2802,
-                 "y":206
+                 "x":2800,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -599,8 +599,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":2922,
-                 "y":255
+                 "x":2928,
+                 "y":240
                 }, 
                 {
                  "height":0,
@@ -611,8 +611,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3034,
-                 "y":255
+                 "x":3024,
+                 "y":240
                 }, 
                 {
                  "height":0,
@@ -623,20 +623,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3786,
-                 "y":208
-                }, 
-                {
-                 "height":0,
-                 "id":70,
-                 "name":"Carrot",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3819,
-                 "y":202
+                 "x":3792,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -647,8 +635,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3883,
-                 "y":205
+                 "x":3888,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -659,20 +647,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3923,
-                 "y":199
-                }, 
-                {
-                 "height":0,
-                 "id":73,
-                 "name":"Carrot",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3933,
-                 "y":199
+                 "x":3936,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -683,32 +659,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3863,
-                 "y":208
-                }, 
-                {
-                 "height":0,
-                 "id":75,
-                 "name":"Carrot",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3843,
-                 "y":207
-                }, 
-                {
-                 "height":0,
-                 "id":76,
-                 "name":"Carrot",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3837,
-                 "y":207
+                 "x":3840,
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -719,8 +671,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3712,
-                 "y":477.5
+                 "x":3728,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -731,20 +683,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3668,
-                 "y":477.5
-                }, 
-                {
-                 "height":0,
-                 "id":79,
-                 "name":"Brussel",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3754,
-                 "y":477.5
+                 "x":3680,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -755,8 +695,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3801,
-                 "y":478.5
+                 "x":3776,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -767,8 +707,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3622,
-                 "y":477.5
+                 "x":3632,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -779,20 +719,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3576,
-                 "y":478.5
-                }, 
-                {
-                 "height":0,
-                 "id":83,
-                 "name":"Brussel",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3551.5,
-                 "y":478
+                 "x":3584,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -803,20 +731,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3528.5,
-                 "y":478
-                }, 
-                {
-                 "height":0,
-                 "id":85,
-                 "name":"Brussel",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3504,
-                 "y":478
+                 "x":3536,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -827,8 +743,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3445,
-                 "y":477.5
+                 "x":3440,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -839,8 +755,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3401,
-                 "y":477.5
+                 "x":3392,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -851,32 +767,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3487,
-                 "y":477.5
-                }, 
-                {
-                 "height":0,
-                 "id":99,
-                 "name":"Brussel",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3534,
-                 "y":478.5
-                }, 
-                {
-                 "height":0,
-                 "id":100,
-                 "name":"Brussel",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3355,
-                 "y":477.5
+                 "x":3488,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -887,20 +779,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3309,
-                 "y":478.5
-                }, 
-                {
-                 "height":0,
-                 "id":102,
-                 "name":"Brussel",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":3284.5,
-                 "y":478
+                 "x":3344,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -911,8 +791,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3261.5,
-                 "y":478
+                 "x":3296,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -923,8 +803,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":3237,
-                 "y":478
+                 "x":3248,
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -936,7 +816,7 @@
                  "visible":true,
                  "width":0,
                  "x":2976,
-                 "y":231
+                 "y":224
                 }, 
                 {
                  "height":0,

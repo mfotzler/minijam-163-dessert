@@ -31,3 +31,15 @@ export const Brussel: DessertComponents = {
 		damage: 1
 	}
 };
+
+export const Carrot: DessertComponents = {
+	position: { x: 0, y: 0 },
+	movement: { hasGravity: true },
+	collision: { tiles: true, player: true, tags: ['projectile'] },
+	render: { spriteKey: 'carrot1', scale: 1, currentAnimation: 'carrot' },
+	enemy: {
+		type: 'carrot',
+		health: 5,
+		damage: 1
+	}
+};

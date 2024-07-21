@@ -68,5 +68,8 @@ const enemyBehaviors = {
 		}
 
 		enemy.stateTime = (enemy.stateTime ?? 1) - 1;
+	},
+	carrot: (world: World, entity: EntityDefinition<DessertComponents>) => {
+		const { collision, render, enemy } = entity;
 	}
 };
