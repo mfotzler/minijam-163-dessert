@@ -3,6 +3,7 @@ import MessageBus from '../messageBus/MessageBus';
 import BaseScene from '../scenes/BaseScene';
 import LevelWon from '../scenes/LevelWon';
 import GameWon from '../scenes/GameWon';
+import GameOver from '../scenes/GameOver';
 
 export type GameState = {
 	level: number;
@@ -19,11 +20,24 @@ export class GameStateSystem implements System {
 
 	constructor(private scene: BaseScene) {
 		MessageBus.subscribe(EventType.SAVE_GRANDMA, () => {
-			GameStateSystem.state.score += 100;
-			GameStateSystem.state.level += 1;
-
-			this.scene.fadeToScene(this.getSceneToFadeTo(), { fadeInDuration: 300 });
+			this.onSaveGrandma();
 		});
+
+		MessageBus.subscribe(EventType.PLAYER_DEAD, () => {
+			this.onPlayerDeath();
+		});
+	}
+
+	private onSaveGrandma() {
+		GameStateSystem.state.score += 100;
+		GameStateSystem.state.level += 1;
+
+		this.scene.fadeToScene(this.getSceneToFadeTo(), { fadeInDuration: 300 });
+	}
+
+	private onPlayerDeath() {
+		GameStateSystem.clearState();
+		this.scene.fadeToScene(GameOver.key, { fadeInDuration: 300 });
 	}
 
 	private getSceneToFadeTo() {
