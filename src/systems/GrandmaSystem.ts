@@ -20,6 +20,8 @@ export class GrandmaSystem implements System {
 		MessageBus.subscribe(EventType.PLAYER_COLLISION, ({ id }) => {
 			if (this.grandmaIds.includes(id)) {
 				MessageBus.sendMessage(EventType.SAVE_GRANDMA, {});
+
+				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
 			}
 		});
 	}

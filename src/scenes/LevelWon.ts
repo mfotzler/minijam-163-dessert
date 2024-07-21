@@ -43,7 +43,7 @@ export default class LevelWon extends BaseScene {
 	}
 
 	private addPlayButton() {
-		UIHelpers.addButton(this, this.renderer.width / 2, 50, 'Play Again', () => {
+		UIHelpers.addButton(this, this.renderer.width / 2, 50, "Keep on Truckin'", () => {
 			this.scene.start(MainScene.key);
 		});
 	}
