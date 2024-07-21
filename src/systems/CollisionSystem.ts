@@ -53,7 +53,10 @@ export class CollisionSystem implements System {
 			);
 
 			if (isOverlapping) {
-				MessageBus.sendMessage(EventType.PROJECTILE_COLLISION, { id: target.id });
+				MessageBus.sendMessage(EventType.PROJECTILE_COLLISION, {
+					id: target.id,
+					damage: entity.projectile.damage ?? 1
+				});
 				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
 			}
 		});

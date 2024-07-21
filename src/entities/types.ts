@@ -66,6 +66,8 @@ export interface ProjectileComponent {
 	cooldown: number;
 	// how many ticks until it dies
 	lifetime?: number;
+	// how much damage it deals enemies
+	damage?: number;
 }
 
 // just exists to say input controls it

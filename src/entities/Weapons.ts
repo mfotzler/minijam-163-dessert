@@ -30,7 +30,7 @@ export const RollingPin: DessertComponents = {
 	},
 	collision: { tiles: false },
 	render: { spriteKey: 'rolling-pin', scale: 0.25 },
-	projectile: { type: 'rolling-pin', cooldown: 15, lifetime: 200 }
+	projectile: { type: 'rolling-pin', cooldown: 15, lifetime: 200, damage: 2 }
 };
 
 export const Weapons = {

@@ -19,12 +19,12 @@ export class EnemySystem implements System {
 			MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: enemyEntity.enemy.damage });
 		});
 
-		MessageBus.subscribe(EventType.PROJECTILE_COLLISION, ({ id }) => {
+		MessageBus.subscribe(EventType.PROJECTILE_COLLISION, ({ id, damage }) => {
 			const enemyEntity = world.entityProvider.getEntity(id);
 
 			if (!enemyEntity?.enemy) return;
 
-			enemyEntity.enemy.health = (enemyEntity.enemy.health ?? 1) - 1;
+			enemyEntity.enemy.health = (enemyEntity.enemy.health ?? 1) - damage;
 			// add flashing
 			enemyEntity.render?.sprite?.setTintFill(0xffffff);
 			for (let i = 1; i <= 5; i++) {
