@@ -109,10 +109,6 @@ export default class MainScene extends BaseScene {
 		this.HealthDisplay = new HealthDisplay(this);
 		this.world.addPlayer();
 
-		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
-		this.world.createEntity(CoinShotPickup, { x: 500, y: 200 });
-		// this.world.createEntity(Grandma, { x: 800, y: 380 });
-
 		this.readEnemyPlacementFromMap();
 
 		super.create();
@@ -120,7 +116,16 @@ export default class MainScene extends BaseScene {
 
 	private readEnemyPlacementFromMap() {
 		this.world.map.getObjectLayer('data dog sponsored by DataDog').objects.forEach((enemy) => {
-			this.world.createEntity(Asparatato, { x: enemy.x, y: enemy.y });
+			const entityTypes = {
+				Asparatato: Asparatato,
+				Grandma: Grandma,
+				Sprinkle: SprinkeShotPickup
+				// Brussel: Brussel,
+				// Carrot: Carrot
+			};
+
+			if (entityTypes[enemy.name])
+				this.world.createEntity(entityTypes[enemy.name], { x: enemy.x, y: enemy.y - 10 });
 		});
 	}
 

@@ -4,21 +4,21 @@ export const FrostingShot: DessertComponents = {
 	movement: { killOnCollision: true, hasGravity: true },
 	collision: { tiles: false },
 	render: { spriteKey: 'frosting', scale: 2 },
-	projectile: { type: 'frosting', speed: 800, cooldown: 30, lifetime: 150 }
+	projectile: { type: 'frosting', speed: 800, cooldown: 30, lifetime: 750 }
 };
 
 export const SprinkleShot: DessertComponents = {
 	movement: { killOnCollision: true, hasGravity: false },
 	collision: { tiles: false },
 	render: { scale: 2, currentAnimation: 'sprinkle-spin', spriteKey: 'sprinkle1' },
-	projectile: { type: 'sprinkle', speed: 1000, cooldown: 15, lifetime: 200 }
+	projectile: { type: 'sprinkle', speed: 1000, cooldown: 15, lifetime: 800 }
 };
 
 export const CoinShot: DessertComponents = {
 	movement: { killOnCollision: true, hasGravity: false },
 	collision: { tiles: false },
 	render: { scale: 2, currentAnimation: 'coin-spin', spriteKey: 'coin01' },
-	projectile: { type: 'coin', speed: 1000, cooldown: 15, lifetime: 200 }
+	projectile: { type: 'coin', speed: 1000, cooldown: 15, lifetime: 900 }
 };
 
 export const RollingPin: DessertComponents = {

@@ -44,7 +44,7 @@ export default class RenderSystem implements System {
 
 					if (projectile?.lifetime) {
 						scene.time.delayedCall(projectile.lifetime, () => {
-							MessageBus.sendMessage(EventType.ENTITY_DELETED, { entityId: id });
+							MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
 						});
 					}
 				}
