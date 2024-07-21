@@ -16,7 +16,7 @@ const getInitialState = (): GameState => ({
 });
 
 export class GameStateSystem implements System {
-	private static state: GameState = getInitialState();
+	public static state: GameState = getInitialState();
 
 	constructor(private scene: BaseScene) {
 		MessageBus.subscribe(EventType.SAVE_GRANDMA, () => {
@@ -36,7 +36,6 @@ export class GameStateSystem implements System {
 	}
 
 	private onPlayerDeath() {
-		GameStateSystem.clearState();
 		this.scene.fadeToScene(GameOver.key, { fadeInDuration: 300 });
 	}
 

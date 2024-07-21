@@ -93,4 +93,5 @@ export interface EnemyComponent {
 	// for tracking how long the enemy has been in the current state
 	stateTime?: number;
 	iframes?: number;
+	shotCooldown?: number;
 }

@@ -40,7 +40,7 @@ export const Carrot: DessertComponents = {
 	render: { spriteKey: 'carrot1', scale: 1, currentAnimation: 'carrot' },
 	enemy: {
 		type: 'carrot',
-		health: 5,
+		health: 2,
 		damage: 1
 	}
 };

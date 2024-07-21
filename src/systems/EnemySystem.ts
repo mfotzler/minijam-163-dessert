@@ -1,12 +1,19 @@
 import { EntityDefinition } from '../engine/entities/types';
-import { System, EventType } from '../engine/types';
+import { EventType, System } from '../engine/types';
 import { Pea } from '../entities/Enemies';
 import { DessertComponents } from '../entities/types';
 import MessageBus from '../messageBus/MessageBus';
 import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
+import { cloneDeep } from 'lodash';
+import { GameStateSystem } from './GameStateSystem';
 
 export class EnemySystem implements System {
+	static readonly CARROT_SHOOTING_RANGE = 300;
+	static readonly CARROT_SHOT_COOLDOWN_EASY = 120;
+	static readonly CARROT_SHOT_COOLDOWN_HARD = 60;
+	static readonly CARROT_SHOT_SPEED = 200;
+
 	constructor(
 		scene: BaseScene,
 		private world: World
@@ -93,5 +100,47 @@ const enemyBehaviors = {
 	},
 	carrot: (world: World, entity: EntityDefinition<DessertComponents>) => {
 		const { collision, render, enemy } = entity;
+		const currentLevel = GameStateSystem.state.level;
+
+		if (currentLevel === 0) {
+			return;
+		}
+
+		const player = world.entityProvider.getEntity(world.playerId);
+
+		if (!collision || !render?.sprite || !player) return;
+
+		const distanceFromPlayerX = player?.render?.sprite?.x - render?.sprite?.x;
+		const distanceFromPlayerY = player?.render?.sprite?.y - render?.sprite?.y;
+
+		const totalDistance = Math.sqrt(distanceFromPlayerX ** 2 + distanceFromPlayerY ** 2);
+		const cooldown = enemy?.shotCooldown ?? 0;
+
+		if (cooldown > 0) {
+			entity.enemy.shotCooldown = cooldown - 1;
+			return;
+		}
+
+		if (totalDistance < EnemySystem.CARROT_SHOOTING_RANGE) {
+			const angle = Math.atan2(distanceFromPlayerY, distanceFromPlayerX);
+			const velocity = EnemySystem.CARROT_SHOT_SPEED;
+
+			const peaClone = cloneDeep(Pea);
+
+			peaClone.movement.initialVelocity = {
+				x: Math.cos(angle) * velocity,
+				y: Math.sin(angle) * velocity
+			};
+
+			world.createEntity(peaClone, {
+				x: render?.sprite?.x,
+				y: render?.sprite?.y
+			});
+
+			entity.enemy.shotCooldown =
+				currentLevel === 1
+					? EnemySystem.CARROT_SHOT_COOLDOWN_EASY
+					: EnemySystem.CARROT_SHOT_COOLDOWN_HARD;
+		}
 	}
 };
