@@ -110,11 +110,18 @@ export default class MainScene extends BaseScene {
 		this.world.addPlayer();
 
 		this.world.createEntity(SprinkeShotPickup, { x: 300, y: 300 });
-		this.world.createEntity(Asparatato, { x: 500, y: 250 });
 		this.world.createEntity(CoinShotPickup, { x: 500, y: 200 });
-		this.world.createEntity(Grandma, { x: 800, y: 380 });
+		// this.world.createEntity(Grandma, { x: 800, y: 380 });
+
+		this.readEnemyPlacementFromMap();
 
 		super.create();
+	}
+
+	private readEnemyPlacementFromMap() {
+		this.world.map.getObjectLayer('data dog sponsored by DataDog').objects.forEach((enemy) => {
+			this.world.createEntity(Asparatato, { x: enemy.x, y: enemy.y });
+		});
 	}
 
 	protected startMusic() {

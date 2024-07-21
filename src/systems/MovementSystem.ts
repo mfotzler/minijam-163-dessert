@@ -38,10 +38,10 @@ export class MovementSystem implements System {
 						}
 					}
 
-					// delete the entity if it's way off screen
-					if (!this.scene.cameras.main.worldView.contains(sprite.x, sprite.y)) {
-						MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
-					}
+					// // delete the entity if it's way off screen
+					// if (!this.scene.cameras.main.worldView.contains(sprite.x, sprite.y)) {
+					// 	MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
+					// }
 				}
 			}
 		});
