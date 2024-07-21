@@ -39,6 +39,7 @@ export enum EventType {
 	MUSIC_PLAY = 'musicPlay',
 	MUSIC_STOP = 'musicStop',
 	SOUND_EFFECT_PLAY = 'soundEffectPlay',
+	PROJECTILE_COLLISION = 'projectileCollision',
 
 	// Player events
 	PLAYER_HEALTH = 'playerHealth',

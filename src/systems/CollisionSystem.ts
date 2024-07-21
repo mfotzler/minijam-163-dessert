@@ -3,6 +3,7 @@ import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
 import MessageBus from '../messageBus/MessageBus';
 import * as Phaser from 'phaser';
+import { DessertComponents } from '../entities/types';
 
 export class CollisionSystem implements System {
 	constructor(
@@ -26,28 +27,61 @@ export class CollisionSystem implements System {
 	step() {
 		// pickup collision going here so it doesn't rely on the player sprite existing at setup time
 		this.world.entityProvider.entities.forEach((entity) => {
-			if (entity.collision?.player && entity.render?.sprite) {
-				const player = this.world.entityProvider.getEntity(this.world.playerId);
-				if (!player?.render?.sprite) return;
+			this.checkForPlayerCollision(entity);
+			this.checkForProjectileCollision(entity);
+		});
+	}
 
-				const playerSprite = player.render.sprite;
-				const playerBoundingBox = playerSprite.getBounds();
-				const entitySprite = entity.render.sprite;
-				const entityBoundingBox = entitySprite.getBounds();
+	private checkForProjectileCollision(entity: DessertComponents & { id: string }) {
+		if (entity?.collision.projectile !== true) return;
+		const entitySprite = entity.render?.sprite;
 
-				// if the player is touching the entity, send a message
-				const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
-					playerBoundingBox,
-					entityBoundingBox
-				);
+		if (!entitySprite) return;
 
-				if (isOverlapping) {
-					MessageBus.sendMessage(EventType.PLAYER_COLLISION, { id: entity.id });
-					if (entity.movement?.killOnCollision) {
-						MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
-					}
-				}
+		const projectiles = this.world.entityProvider.entities.filter(
+			(e) => e.collisionType?.type === 'projectile'
+		);
+
+		projectiles.forEach((projectile) => {
+			if (!projectile.render?.sprite) return;
+			const projectileSprite = projectile.render.sprite;
+			const projectileBoundingBox = projectileSprite.getBounds();
+			const entityBoundingBox = entitySprite.getBounds();
+
+			const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
+				projectileBoundingBox,
+				entityBoundingBox
+			);
+
+			if (isOverlapping) {
+				MessageBus.sendMessage(EventType.PROJECTILE_COLLISION, { id: entity.id });
+				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: projectile.id });
 			}
 		});
+	}
+
+	private checkForPlayerCollision(entity: DessertComponents & { id: string }) {
+		if (entity.collision?.player && entity.render?.sprite) {
+			const player = this.world.entityProvider.getEntity(this.world.playerId);
+			if (!player?.render?.sprite) return;
+
+			const playerSprite = player.render.sprite;
+			const playerBoundingBox = playerSprite.getBounds();
+			const entitySprite = entity.render.sprite;
+			const entityBoundingBox = entitySprite.getBounds();
+
+			// if the player is touching the entity, send a message
+			const isOverlapping = Phaser.Geom.Intersects.RectangleToRectangle(
+				playerBoundingBox,
+				entityBoundingBox
+			);
+
+			if (isOverlapping) {
+				MessageBus.sendMessage(EventType.PLAYER_COLLISION, { id: entity.id });
+				if (entity.movement?.killOnCollision) {
+					MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: entity.id });
+				}
+			}
+		}
 	}
 }

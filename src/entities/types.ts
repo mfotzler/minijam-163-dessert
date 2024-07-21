@@ -49,6 +49,7 @@ export interface CollisionComponent {
 	tiles?: boolean;
 	// if the object emits an event when hitting the player
 	player?: boolean;
+	projectile?: boolean;
 	blocked?: {
 		up: boolean;
 		down: boolean;

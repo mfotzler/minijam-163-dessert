@@ -2,7 +2,7 @@ import { DessertComponents } from './types';
 
 export const Asparatato: DessertComponents = {
 	position: { x: 0, y: 0 },
-	collision: { player: true },
+	collision: { player: true, projectile: true },
 	render: { spriteKey: 'asparagus-potato-head', scale: 1 },
 	enemy: {
 		type: 'asparatato',

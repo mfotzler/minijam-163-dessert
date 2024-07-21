@@ -14,6 +14,18 @@ export class EnemySystem implements System {
 
 			MessageBus.sendMessage(EventType.PLAYER_DAMAGE, { damage: enemyEntity.enemy.damage });
 		});
+
+		MessageBus.subscribe(EventType.PROJECTILE_COLLISION, ({ id }) => {
+			const enemyEntity = world.entityProvider.getEntity(id);
+
+			if (!enemyEntity?.enemy) return;
+
+			enemyEntity.enemy.health = (enemyEntity.enemy.health ?? 1) - 1;
+
+			if (enemyEntity.enemy.health <= 0) {
+				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
+			}
+		});
 	}
 
 	step() {
