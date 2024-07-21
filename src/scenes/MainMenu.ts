@@ -34,8 +34,8 @@ export default class MainMenu extends BaseScene {
 			repeat: -1
 		});
 
-		let sprinkle1 = this.add.sprite(200, 90, 'textures', 'sprinkle1');
-		let sprinkle2 = this.add.sprite(this.renderer.width - 200, 90, 'textures', 'sprinkle1');
+		let sprinkle1 = this.add.sprite(150, 90, 'textures', 'sprinkle1');
+		let sprinkle2 = this.add.sprite(this.renderer.width - 150, 90, 'textures', 'sprinkle1');
 
 		sprinkle1.scale = 4;
 		sprinkle2.scale = 4;
