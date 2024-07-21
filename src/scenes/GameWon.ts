@@ -5,6 +5,8 @@ import MessageBus from '../messageBus/MessageBus';
 import DialogueBox from '../entities/DialogueBox';
 import Container = Phaser.GameObjects.Container;
 import { EventType } from '../engine/types';
+import MainMenu from './MainMenu';
+import { GameStateSystem } from '../systems/GameStateSystem';
 
 export default class GameWon extends BaseScene {
 	static readonly key = 'GameWon';
@@ -59,7 +61,10 @@ export default class GameWon extends BaseScene {
 					image: 'cupcake-face'
 				}
 			],
-			() => this.scene.start(MainScene.key)
+			() => {
+				GameStateSystem.clearState();
+				this.fadeToScene(MainScene.key, { fadeInDuration: 300 });
+			}
 		);
 		this.add.existing<Container>(dialogueBox);
 	}

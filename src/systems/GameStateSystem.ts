@@ -9,13 +9,13 @@ export type GameState = {
 	score: number;
 };
 
-export class GameStateSystem implements System {
-	private static state: GameState = {
-		level: 0,
-		score: 0
-	};
+const getInitialState = (): GameState => ({
+	level: 0,
+	score: 0
+});
 
-	private static isTransitioning = false;
+export class GameStateSystem implements System {
+	private static state: GameState = getInitialState();
 
 	constructor(private scene: BaseScene) {
 		MessageBus.subscribe(EventType.SAVE_GRANDMA, () => {
@@ -27,7 +27,7 @@ export class GameStateSystem implements System {
 	}
 
 	private getSceneToFadeTo() {
-		if (GameStateSystem.state.level < 0) {
+		if (GameStateSystem.state.level < 3) {
 			return LevelWon.key;
 		}
 
@@ -35,4 +35,8 @@ export class GameStateSystem implements System {
 	}
 
 	step() {}
+
+	static clearState() {
+		GameStateSystem.state = getInitialState();
+	}
 }

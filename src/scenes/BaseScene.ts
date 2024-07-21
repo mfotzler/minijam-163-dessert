@@ -55,7 +55,7 @@ export default class BaseScene extends Phaser.Scene {
 		this.input.keyboard.enabled = false;
 		this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
 			this.scene.sleep();
-			this.scene.run(key, { fadeInDuration: 300, ...args });
+			this.scene.start(key, { fadeInDuration: 300, ...args });
 			this.isFading = false;
 		});
 	}

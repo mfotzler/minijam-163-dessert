@@ -2,7 +2,7 @@ import MainScene from './MainScene';
 import UIHelpers from '../UIHelpers';
 import BaseScene from './BaseScene';
 import TutorialScene from './TutorialScene';
-import Sprite = Phaser.GameObjects.Sprite;
+import { GameStateSystem } from '../systems/GameStateSystem';
 
 export default class MainMenu extends BaseScene {
 	static readonly key = 'MainMenu';
@@ -64,6 +64,7 @@ export default class MainMenu extends BaseScene {
 
 	private addPlayButton() {
 		UIHelpers.addCenteredButton(this, 400, 'Play', () => {
+			GameStateSystem.clearState();
 			this.fadeToScene(MainScene.key, { fadeInDuration: 300 });
 		});
 	}
