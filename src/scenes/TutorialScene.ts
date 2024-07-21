@@ -95,8 +95,7 @@ export default class TutorialScene extends BaseScene {
 
 	private addPlayButton() {
 		UIHelpers.addButton(this, this.renderer.width / 2, 50, 'Back to Main Menu', () => {
-			this.music.stop();
-			this.scene.start(MainMenu.key);
+			this.fadeToScene(MainMenu.key, { fadeInDuration: 300 });
 		});
 	}
 }
