@@ -1,9 +1,10 @@
 ﻿import { EventType, StepData, System } from '../engine/types';
 import MessageBus from '../messageBus/MessageBus';
+import { World } from '../world';
 
 export default class PlayerHealthSystem implements System {
 	private currentHealth: number;
-	constructor() {
+	constructor(private world: World) {
 		this.initializePlayerHealth();
 		MessageBus.subscribe(EventType.PLAYER_HEALTH, this.onPlayerHealth.bind(this), {
 			shouldInitializeWithLastMessage: true
@@ -27,11 +28,23 @@ export default class PlayerHealthSystem implements System {
 	}
 
 	private onDamage(data: { damage: number }) {
+		const playerEntity = this.world.entityProvider.getEntity(this.world.playerId);
+		if (playerEntity?.player?.iframes > 0) return;
+
+		playerEntity.player.iframes = 60;
 		MessageBus.sendMessage(EventType.PLAYER_HEALTH, { health: this.currentHealth - data.damage });
 	}
+
 	private onHeal(data: { heal: number }) {
 		MessageBus.sendMessage(EventType.PLAYER_HEALTH, { health: this.currentHealth + data.heal });
 	}
 
-	step(data: StepData): Promise<void> | void {}
+	step(): Promise<void> | void {
+		const playerEntity = this.world.entityProvider.getEntity(this.world.playerId);
+		if (!playerEntity?.player) return;
+
+		if (playerEntity.player.iframes > 0) {
+			playerEntity.player.iframes--;
+		}
+	}
 }
