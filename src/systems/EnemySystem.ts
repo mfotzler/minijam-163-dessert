@@ -31,7 +31,7 @@ export class EnemySystem implements System {
 	step() {
 		this.world.entityProvider.entities.forEach((entity) => {
 			if (entity.enemy?.type) {
-				enemyBehaviors[entity.enemy.type](this.world, entity);
+				enemyBehaviors[entity.enemy.type]?.(this.world, entity);
 			}
 		});
 	}
@@ -57,5 +57,16 @@ const enemyBehaviors = {
 		}
 
 		enemy.stateTime = (enemy.stateTime ?? 0) + 1;
+	},
+	brussel: (world: World, entity: EntityDefinition<DessertComponents>) => {
+		const { collision, render, enemy } = entity;
+		if (!collision || !render?.sprite) return;
+
+		if (collision.blocked?.down && enemy?.stateTime <= 0) {
+			render.sprite.setVelocityY(-800);
+			enemy.stateTime = Math.random() * 180;
+		}
+
+		enemy.stateTime = (enemy.stateTime ?? 1) - 1;
 	}
 };

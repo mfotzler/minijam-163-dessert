@@ -19,3 +19,15 @@ export const Pea: DessertComponents = {
 		damage: 1
 	}
 };
+
+export const Brussel: DessertComponents = {
+	position: { x: 0, y: 0 },
+	movement: { hasGravity: true },
+	collision: { tiles: true, player: true, tags: ['projectile'] },
+	render: { spriteKey: 'sprout1', scale: 1, currentAnimation: 'sprout' },
+	enemy: {
+		type: 'brussel',
+		health: 1,
+		damage: 1
+	}
+};

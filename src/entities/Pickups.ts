@@ -16,8 +16,7 @@ export const CoinShotPickup: DessertComponents = {
 
 export const Grandma: DessertComponents = {
 	position: { x: 0, y: 0 },
-	collision: { player: true },
+	collision: { player: true, tags: ['grandma'] },
 	render: { spriteKey: 'grandma1', scale: 0.25 },
-	facing: { direction: Direction.LEFT },
-	collisionType: { type: 'grandma' }
+	facing: { direction: Direction.LEFT }
 };

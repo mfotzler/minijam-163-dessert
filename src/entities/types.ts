@@ -16,7 +16,6 @@ export interface DessertComponents {
 	projectile?: ProjectileComponent;
 	weaponPickup?: WeaponPickupComponent;
 	enemy?: EnemyComponent;
-	collisionType?: CollisionTypeComponent;
 }
 
 export interface RenderComponent {
@@ -49,13 +48,13 @@ export interface CollisionComponent {
 	tiles?: boolean;
 	// if the object emits an event when hitting the player
 	player?: boolean;
-	projectile?: boolean;
 	blocked?: {
 		up: boolean;
 		down: boolean;
 		left: boolean;
 		right: boolean;
 	};
+	tags?: string[];
 }
 
 export interface ProjectileComponent {
@@ -75,6 +74,7 @@ export interface InputComponent {}
 export interface PlayerComponent {
 	currentWeapon: WeaponType;
 	shotCooldown: number;
+	iframes: number;
 }
 
 export interface WeaponPickupComponent {
@@ -88,8 +88,4 @@ export interface EnemyComponent {
 	aiState?: string;
 	// for tracking how long the enemy has been in the current state
 	stateTime?: number;
-}
-
-export interface CollisionTypeComponent {
-	type: string;
 }

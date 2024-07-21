@@ -15,7 +15,7 @@ import HealthDisplay from '../entities/HealthDisplay';
 import { CoinShotPickup, Grandma, SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
-import { Asparatato } from '../entities/Enemies';
+import { Asparatato, Brussel } from '../entities/Enemies';
 import { EnemySystem } from '../systems/EnemySystem';
 import { MusicSystem } from '../systems/MusicSystem';
 import { SoundEffectSystem } from '../systems/SoundEffectSystem';
@@ -105,6 +105,16 @@ export default class MainScene extends BaseScene {
 			repeat: -1
 		});
 
+		this.anims.create({
+			key: 'sprout',
+			frames: this.anims.generateFrameNames('textures', {
+				prefix: 'sprout',
+				frames: [1, 2, 3, 4]
+			}),
+			frameRate: 8,
+			repeat: -1
+		});
+
 		this.initializeMapAndCameras();
 		this.HealthDisplay = new HealthDisplay(this);
 		this.world.addPlayer();
@@ -119,8 +129,8 @@ export default class MainScene extends BaseScene {
 			const entityTypes = {
 				Asparatato: Asparatato,
 				Grandma: Grandma,
-				Sprinkle: SprinkeShotPickup
-				// Brussel: Brussel,
+				Sprinkle: SprinkeShotPickup,
+				Brussel: Brussel
 				// Carrot: Carrot
 			};
 
