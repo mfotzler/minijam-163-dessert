@@ -3,10 +3,14 @@ import { System, EventType } from '../engine/types';
 import { Pea } from '../entities/Enemies';
 import { DessertComponents } from '../entities/types';
 import MessageBus from '../messageBus/MessageBus';
+import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
 
 export class EnemySystem implements System {
-	constructor(private world: World) {
+	constructor(
+		scene: BaseScene,
+		private world: World
+	) {
 		MessageBus.subscribe(EventType.PLAYER_COLLISION, ({ id }) => {
 			const playerEntity = world.entityProvider.getEntity(world.playerId);
 			const enemyEntity = world.entityProvider.getEntity(id);
@@ -21,9 +25,23 @@ export class EnemySystem implements System {
 			if (!enemyEntity?.enemy) return;
 
 			enemyEntity.enemy.health = (enemyEntity.enemy.health ?? 1) - 1;
+			// add flashing
+			enemyEntity.render?.sprite?.setTintFill(0xffffff);
+			for (let i = 1; i <= 5; i++) {
+				scene.time.delayedCall(i * 50, () => {
+					if (i % 2 === 0) {
+						enemyEntity.render?.sprite?.setTintFill(0xffffff);
+					} else {
+						enemyEntity.render?.sprite?.clearTint();
+					}
+				});
+			}
 
 			if (enemyEntity.enemy.health <= 0) {
 				MessageBus.sendMessage(EventType.DELETE_ENTITY, { entityId: id });
+				MessageBus.sendMessage(EventType.SOUND_EFFECT_PLAY, { key: 'hurt_2' });
+			} else {
+				MessageBus.sendMessage(EventType.SOUND_EFFECT_PLAY, { key: 'hurt_1' });
 			}
 		});
 	}

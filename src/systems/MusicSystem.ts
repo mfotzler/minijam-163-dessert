@@ -39,7 +39,7 @@ export class MusicSystem implements System {
 			this.trackList[fileName] = this.scene.sound.add(fileName);
 		}
 
-		this.trackList[fileName].play({ loop: true });
+		this.trackList[fileName].play({ loop: true, volume: 0.5 });
 	}
 
 	step(data: StepData): Promise<void> | void {}

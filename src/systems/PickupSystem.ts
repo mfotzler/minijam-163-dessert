@@ -4,8 +4,6 @@ import BaseScene from '../scenes/BaseScene';
 import { World } from '../world';
 
 export class PickupSystem implements System {
-	private sfx: Record<string, Phaser.Sound.BaseSound> = {};
-
 	constructor(
 		private scene: BaseScene,
 		world: World
@@ -29,11 +27,4 @@ export class PickupSystem implements System {
 	}
 
 	step() {}
-
-	private getSfx(key: string) {
-		if (!this.sfx[key]) {
-			this.sfx[key] = this.scene.sound.add(key);
-		}
-		return this.sfx[key];
-	}
 }

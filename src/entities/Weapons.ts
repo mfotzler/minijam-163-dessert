@@ -26,11 +26,11 @@ export const RollingPin: DessertComponents = {
 		killOnCollision: true,
 		hasGravity: false,
 		initialVelocity: { x: 0, y: 0 },
-		rotation: { velocity: 360, startAngle: 280, origin: { x: 0, y: 0.5 } }
+		rotation: { velocity: 600, startAngle: 280, origin: { x: 0, y: 0.5 } }
 	},
 	collision: { tiles: false },
 	render: { spriteKey: 'rolling-pin', scale: 0.25 },
-	projectile: { type: 'rolling-pin', cooldown: 15, lifetime: 240 }
+	projectile: { type: 'rolling-pin', cooldown: 15, lifetime: 200 }
 };
 
 export const Weapons = {

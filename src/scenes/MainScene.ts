@@ -1,7 +1,6 @@
 import * as Phaser from 'phaser';
 import BaseScene from './BaseScene';
 import { GameEngine } from '../engine/gameEngine';
-import { Player } from '../entities/Player';
 import RenderSystem from '../systems/RenderSystem';
 import InputSystem from '../systems/InputSystem';
 import { MovementSystem } from '../systems/MovementSystem';
@@ -12,7 +11,7 @@ import MessageBus from '../messageBus/MessageBus';
 import { EventType } from '../engine/types';
 import { WeaponSystem } from '../systems/WeaponSystem';
 import HealthDisplay from '../entities/HealthDisplay';
-import { CoinShotPickup, Grandma, SprinkeShotPickup } from '../entities/Pickups';
+import { Grandma, SprinkeShotPickup } from '../entities/Pickups';
 import { PickupSystem } from '../systems/PickupSystem';
 import { MeleeSystem } from '../systems/MeleeSystem';
 import { Asparatato, Brussel, Carrot } from '../entities/Enemies';
@@ -46,7 +45,7 @@ export default class MainScene extends BaseScene {
 		this.engine.addSystem(new WeaponSystem(this.world));
 		this.engine.addSystem(new PickupSystem(this, this.world));
 		this.engine.addSystem(new MeleeSystem(this.world));
-		this.engine.addSystem(new EnemySystem(this.world));
+		this.engine.addSystem(new EnemySystem(this, this.world));
 		this.engine.addSystem(new MusicSystem(this));
 		this.engine.addSystem(new SoundEffectSystem(this));
 		this.engine.addSystem(new GrandmaSystem(this.world));
